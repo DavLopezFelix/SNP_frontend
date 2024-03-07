@@ -7,6 +7,8 @@ import Regionsur from './components/regionsur';
 import Inicio from './components/inicio';
 import Sesionsnp from './components/sesionsnp';
 import NavBarExample from './layouts/navbar';
+import ReportesEmpresas from './nortecentro/reportesempresas';
+import RankingPorPuntuacion from './nortecentro/rankingpuntuacion';
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
         <Route path='/' element={<NavBarExample />}>
           <Route index element={ <Inicio />}  />
           <Route path='regionnortecentro' element={ <Regionnortecentro />}  />
+          <Route path='regionnortecentro/reportesempresas' element={<ReportesEmpresas />} />
+          <Route path='regionnortecentro/rankingporpuntuacion' element={<RankingPorPuntuacion />} />
+
           <Route path='Regionsur' element={ <Regionsur />}  />
           <Route path='Sesionsnp' element={ <Sesionsnp />}  />
 
