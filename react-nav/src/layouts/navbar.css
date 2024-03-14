@@ -1,0 +1,18 @@
+/* Estilos para la navbar */
+
+.navbar.navBg {
+    background-color: #F1F1F1; /* Color de fondo */
+}
+
+.navbar.navBg,
+.navbar.navBg .navbar-nav .nav-link {
+    color: black !important; /* Color del texto en negro */
+    font-size: 20px; /* Tamaño de la letra */
+}
+
+.nav-item-custom {
+    margin-right: 70px; /* Ajusta este valor según necesites */
+}
+.nav-item-img {
+    margin-right: 0px;
+}
