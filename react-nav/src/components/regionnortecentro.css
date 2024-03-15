@@ -1,0 +1,35 @@
+.table-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    height: 25vh; /* Establece la altura del contenedor al 100% de la ventana */
+}
+
+/* Estilos para las filas y columnas para visualizar las divisiones */
+.excel-like-table {
+    width: 95%; /* O ajusta según necesites */
+    height: 50px;/* Elimina el espacio entre los bordes de las celdas */
+}
+
+.excel-like-table td {
+    border: 1px solid #000; /* Añade un borde sólido a cada celda */
+    padding: 10px; /* Añade algo de espacio dentro de cada celda */
+    text-align: center;
+    width: 90%;  /* Alinea el texto a la izquierda */
+}
+.excel-like-table td a {
+    text-decoration: none; /* Elimina el subrayado de todos los enlaces dentro de las celdas */
+    color: #000; /* Establece el color del texto como negro */
+
+}
+
+.celda-vacia {
+    height: 500px;
+}
+
+/* Ajustes adicionales para la región título para que no sea tan grande y se ajuste mejor */
+.region-title {
+    font-size: 20px; /* Ajusta el tamaño del texto según necesites */
+    margin-bottom: 0; 
+    text-align: left;
+}

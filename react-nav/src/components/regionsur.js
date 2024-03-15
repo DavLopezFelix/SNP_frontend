@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'; // Importar Link para la navegación
 const Regionsur = () => {
     return (
         <div>
-            <h1>Vista Región Sur</h1>
+            <h1>Región sur</h1>
             {/* Agregar enlaces para la navegación interna */}
             <ul>
                 <li>

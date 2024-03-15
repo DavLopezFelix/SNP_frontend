@@ -1,0 +1,19 @@
+.boton {
+    background-color: #1E9AAA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para el botón cuando está desactivado */
+  .boton.desactivado {
+    background-color: white;
+    color: black;
+  }
+  
+  .boton:hover {
+    background-color: #137c89; /* Cambiar el color cuando se pasa el ratón sobre el botón */
+  }
+  

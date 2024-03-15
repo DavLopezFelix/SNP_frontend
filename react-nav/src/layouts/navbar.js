@@ -24,7 +24,7 @@ const NavBarExample = () => {
                 </Navbar.Collapse>
                 {/* {<Container className="justify-content-end"> */}
                     {/* Logo secundario a la derecha */}
-                    <img src={logoSecundario} alt="Logo Secundario" className="nav-item-img" style={{ width: "125px", height: "65px" }}/>
+                    <img src={logoSecundario} alt="Logo Secundario" className="nav-item-img" style={{ width: "150px", height: "65px" }}/>
                 </Container>
             </Navbar>
             <section>
