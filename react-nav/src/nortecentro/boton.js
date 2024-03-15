@@ -1,16 +1,19 @@
+// Boton.js
 import React from 'react';
-import '../nortecentro/boton.css'; // Asegúrate de que el archivo CSS esté correctamente vinculado
+import '../nortecentro/boton.css';
 
-// Componente de botón reutilizable
-const Boton = ({ onClick, color, children }) => (
-  <button 
-    className="boton" 
-    style={{ backgroundColor: color, color: color === 'white' ? 'black' : 'white' }} 
-    onClick={onClick}
-  >
-    {children}
-  </button>
-);
+const Boton = ({ children, onClick, color, textColor }) => {
+  const botonStyle = {
+    backgroundColor: color,
+    color: textColor
+  };
+
+  return (
+    <button className="boton" style={botonStyle} onClick={onClick}>
+      {children}
+    </button>
+  );
+}
 
 export default Boton;
 

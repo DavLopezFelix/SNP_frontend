@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center; /* Centra horizontalmente el contenido */
     align-items: center; /* Centra verticalmente el contenido */
-    height: 25vh; /* Establece la altura del contenedor al 100% de la ventana */
+    height: 20vh; /* Establece la altura del contenedor al 100% de la ventana */
 }
 
 /* Estilos para las filas y columnas para visualizar las divisiones */
@@ -32,4 +32,46 @@
     font-size: 20px; /* Ajusta el tamaño del texto según necesites */
     margin-bottom: 0; 
     text-align: left;
+}
+.cuadro-grande {
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    width: 95%;
+    max-width: 1294px;
+    margin: 0px auto;
+    height: 61vh;
+  }
+  /* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    .table-container {
+        display: flex;
+       justify-content: center; /* Centra horizontalmente el contenido */
+       align-items: center;
+       height: 20vh; /* Establece la altura automática para que se ajuste al contenido */
+    }
+
+    .excel-like-table {
+        width: 95%; /* Ancho del 100% para ocupar todo el ancho de la pantalla */
+        height: 50px; /* Altura automática para ajustarse al contenido */
+    }
+
+    .excel-like-table td {
+        width: 90px; 
+        text-align: center;/* Ancho automático para ajustarse al contenido */
+    }
+
+    .region-title {
+        font-size: 15px; 
+        text-align: left;/* Reduce el tamaño del texto para dispositivos móviles */
+    }
+    .cuadro-grande {
+        background-color: white;
+        border: 1px solid black;
+        padding: 20px;
+        width: 94%;
+        max-width: 1294px;
+        margin: 0px auto;
+        height: 61vh;
+      }
 }
