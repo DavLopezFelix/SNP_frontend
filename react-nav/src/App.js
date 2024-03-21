@@ -2,10 +2,10 @@ import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 //Importamos los componentes creados
-import Regionnortecentro from './components/regionnortecentro';
-import Regionsur from './components/regionsur';
-import Inicio from './components/inicio';
-import Sesionsnp from './components/sesionsnp';
+import Regionnortecentro from './componentsclient/regionnortecentro';
+import Regionsur from './componentsclient/regionsur';
+import Inicio from './componentsclient/inicio';
+import Sesionsnp from './componentsclient/sesionsnp';
 import NavBarExample from './layouts/navbar';
 import ReportesEmpresas from './nortecentro/reportesempresas';
 import RankingPorPuntuacion from './nortecentro/rankingpuntuacion';

@@ -4,7 +4,7 @@ import './navbar.css';
 import logo from '../img/logoprincipal.png';
 import logoSecundario from '../img/logoSalvamares.png';
 
-const NavBarExample = () => {
+const NavBarSNP = () => {
     return (
         <>
             <Navbar className="navBg" variant="dark" expand="lg">
@@ -20,6 +20,7 @@ const NavBarExample = () => {
                         <Nav.Link as={Link} to="/regionnortecentro" className="nav-item-custom">Región norte-centro</Nav.Link>
                         <Nav.Link as={Link} to="/regionsur" className="nav-item-custom">Región sur</Nav.Link>
                         <Nav.Link as={Link} to="/sesionsnp" className="nav-item-custom">Sesión de SNP</Nav.Link>
+                        <Nav.Link as={Link} to="/sesionsnp" className="nav-item-custom">Cerrar Sesión</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 {/* {<Container className="justify-content-end"> */}
@@ -34,4 +35,4 @@ const NavBarExample = () => {
     );
 };
 
-export default NavBarExample;
+export default NavBarSNP;

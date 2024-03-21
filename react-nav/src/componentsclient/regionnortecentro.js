@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Boton from '../nortecentro/boton';
-import './regionnortecentro.css'; 
+import './estilosregiones.css'; 
 
 const ReportesEmpresas = () => (
   <div className="mensaje">
