@@ -1,0 +1,14 @@
+/* Estilos para pantallas grandes */
+.authenticator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Ajusta la altura según sea necesario */
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .authenticator-container {
+        height: 80vh; /* Utiliza toda la altura de la pantalla */
+    }
+}

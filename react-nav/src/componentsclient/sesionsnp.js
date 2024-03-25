@@ -1,26 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Authenticator } from '@aws-amplify/ui-react';
+import HomeSesionsnp from '../componentssnp/homesesionsnp';
 import '@aws-amplify/ui-react/styles.css';
+import '../componentsclient/sesionsnp.css';
 
 const Sesionsnp = () => {
+         console.log("Bienvenido a la sesion");
+         
     return (
         <div>
-            <Link to="/regionnortecentro">Inicio.</Link>
-            <Authenticator>
-                {({ signOut }) => (
-                    <div>
-                        <h2>Bienvenido a la Sesión de SNP</h2>
-                        <h3>Tu autenticador</h3>
-                        <form>
-                            <button onClick={signOut}>Cerrar Sesión</button>
-                        </form>
-                    </div>
-                )} 
-            </Authenticator>
-            {/* Enlace para regresar a la vista principal */}
-            {/* <Link to="/">Inicio.</Link> */}
-            {/* Aquí puedes agregar más contenido si es necesario */}
+            
+            {/* Contenedor para centrar el Authenticator */}
+            <div className="authenticator-container">
+                <Authenticator>
+                    {({ signOut }) => (
+                        <HomeSesionsnp signOut={signOut} />
+                    )} 
+                </Authenticator>
+            </div>
         </div>
     );
 }
