@@ -1,0 +1,11 @@
+.footer {
+    background-color: #F1F1F1; /* Color de fondo */
+    padding: 10px; /* Reducir el espacio alrededor del contenido */
+    text-align: center; /* Alineación del texto al centro */
+  }
+  
+  .footer p {
+    margin: 0; /* Eliminar el margen predeterminado del párrafo */
+    font-size: 14px; /* Reducir el tamaño del texto */
+  }
+  
