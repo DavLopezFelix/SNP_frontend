@@ -1,0 +1,62 @@
+/* Estilos para la tabla */
+.table-container-ranking {
+    margin-top: 65px; /* Agrega un poco de margen superior */
+}
+
+.excel-like-table-ranking {
+    width: 56%; /* Ajusta el ancho de la tabla según tu necesidad */
+    border-collapse: collapse;
+    overflow-x: auto;
+    max-width: 94%; /* Ajusta el ancho máximo de la tabla al 94% del contenedor */
+    margin: 0 auto; /* Centra la tabla horizontalmente */
+}
+
+.excel-like-table-ranking th,
+.excel-like-table-ranking td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center; /* Centra el texto y los números */
+}
+
+.excel-like-table-ranking th {
+    background-color: #00B3A1;
+    color: white;
+}
+
+.excel-like-table-ranking tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    .table-container-ranking {
+        width: 100%;
+        margin-left: calc(3% - 20px); /* Ajusta el margen izquierdo */
+    }
+    .excel-like-table-ranking {
+      width: 100%;
+      border-collapse: collapse;
+      overflow-x: auto;
+      max-width: 94%; /* Ajusta el ancho máximo de la tabla al 94% del contenedor */
+      margin: 0 auto; /* Centra la tabla horizontalmente */
+    }
+  
+    .excel-like-table-ranking th,
+    .excel-like-table-ranking td {
+      padding: 8px;
+      border: 1px solid #dddddd;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; /* Agrega puntos suspensivos (...) cuando el contenido es demasiado largo */
+    }
+  
+    .excel-like-table-ranking th {
+      background-color: #00B3A1;
+      color: white;
+    }
+  
+    .excel-like-table-ranking tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  }

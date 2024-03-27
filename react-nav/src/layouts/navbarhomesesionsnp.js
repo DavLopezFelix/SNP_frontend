@@ -27,7 +27,6 @@ const NavbarHomeSesionsnp = ({ signOut }) => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mx-auto">
-                            <Nav.Link as={Link} to="regionnortecentro" className="nav-item-custom">Inicio</Nav.Link>
                             <Nav.Link as={Link} to="regionnortecentrosnp" className="nav-item-custom">Región norte-centro</Nav.Link>
                             <Nav.Link as={Link} to="regionsursnp" className="nav-item-custom">Región sur</Nav.Link>
                             <Nav.Link className="nav-item-custom" onClick={handleSignOut}>Cerrar Sesión</Nav.Link>

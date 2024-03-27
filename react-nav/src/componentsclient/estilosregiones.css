@@ -13,7 +13,7 @@
 
 .excel-like-table td {
     border: 1px solid #000; /* Añade un borde sólido a cada celda */
-    padding: 10px; /* Añade algo de espacio dentro de cada celda */
+    padding: 3px; /* Añade algo de espacio dentro de cada celda */
     text-align: center;
     width: 90%;  /* Alinea el texto a la izquierda */
 }

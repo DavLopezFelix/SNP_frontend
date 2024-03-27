@@ -22,6 +22,7 @@ import LongitudPesoSur from './sursesionsnp/longitudpesosur';
 import UbicacionCarpetasSur from './sursesionsnp/ubicacioncarpetassur';
 import DescargasSur from './sursesionsnp/descargassur';
 
+import Footer from './footer/footer'
 
 function App() {
   return (
@@ -39,15 +40,14 @@ function App() {
             <Route path='regionsur/rankingporpuntuacionsur' element={<RankingPorPuntuacion />} />           
           </Route>
       
-          {/* Ruta para SesionSNP */}NavbarSesionsnp
+          {/* Ruta para SesionSNP */}
           <Route path='/sesionsnp/*' element={<NavbarSesionsnp />}>
           <Route index element={<Sesionsnp />} />
           </Route>
             
 
-          <Route path='/HomeSesionsnp/*' element={<NavbarHomeSesionsnp />}>
-            <Route index element={<Sesionsnp />} />
-            <Route path='homesesionsnp' element={<HomeSesionsnp />} />
+          <Route path='/RegionNorteCentroSNP/*' element={<NavbarHomeSesionsnp />}>
+            <Route index element={<RegionNorteCentroSNP />} />
             <Route path='regionnortecentrosnp' element={<RegionNorteCentroSNP />} />
             <Route path='regionnortecentrosnp/longitudpeso' element={<LongitudPeso />} />
             <Route path='regionnortecentrosnp/ubicacioncarpetas' element={<UbicacionCarpetas />} />
@@ -63,6 +63,7 @@ function App() {
           <Route path='*' element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
