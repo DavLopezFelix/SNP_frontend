@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import Boton from '../nortecentro/boton';
 import '../componentsclient/estilosregiones.css'; 
+import UbicacionCarpetas from '../nortecentrosesionsnp/ubicacioncarpetas';
 
 const LongitudPeso = () => (
   <div className="mensaje">
-    Aquí encontrará la LOngitud Peso.
+    Aquí encontrará la Longitud Peso.
   </div>
 );
 
-const UbicacionCarpetas = () => (
-  <div className="mensaje">
-    Aquí encontrarás la Ubicacion de Carpetas.
-  </div>
-);
 
 const Descargas = () => (
     <div className="mensaje">
