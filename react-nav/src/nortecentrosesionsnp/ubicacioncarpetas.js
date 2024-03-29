@@ -13,21 +13,21 @@ const UbicacionCarpetas = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [inputModified, setInputModified] = useState(false); // Estado para rastrear si se han modificado los campos de entrada
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/appLocation', {
-          headers: {
-            'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
-          }
-        });
-        const responseData = await response.json();
-        setAppData(responseData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/appLocation', {
+        headers: {
+          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
+        }
+      });
+      const responseData = await response.json();
+      setAppData(responseData);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -70,6 +70,7 @@ const UbicacionCarpetas = () => {
 
   const closePopup = () => {
     setSuccessMessage('');
+    fetchData(); // Hacer de nuevo el llamado al endpoint para obtener la ubicación de los archivos
   };
 
   return (
@@ -150,4 +151,3 @@ const UbicacionCarpetas = () => {
 };
 
 export default UbicacionCarpetas;
-
