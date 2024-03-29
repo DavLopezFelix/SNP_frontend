@@ -37,12 +37,15 @@ const UbicacionCarpetas = () => {
       ...prevState,
       [appName]: value
     }));
-    setInputModified(true); // Marca que se han modificado los campos de entrada
+
+    // Verifica si algún campo de entrada tiene valor
+    const isAnyFieldFilled = Object.values({ ...nuevaUbicacion, [appName]: value }).some(val => val !== '');
+    setInputModified(isAnyFieldFilled); // Marca que se han modificado los campos de entrada si algún campo tiene valor
   };
 
   const enviarDatos = async () => {
     if (!inputModified) { // Verifica si se han modificado los campos de entrada
-      setErrorMessage('Ingrese la modificación de sus archivos'); // Establece el mensaje de error si no se ha modificado ningún campo
+      setErrorMessage('Ingrese almenos una nueva ubicación'); // Establece el mensaje de error si no se ha modificado ningún campo
       return;
     }
     try {
@@ -75,6 +78,7 @@ const UbicacionCarpetas = () => {
       App2: '',
       App3: ''
     });
+    setInputModified(false); // Establecer inputModified como false cuando se cierra el popup
     fetchData(); // Hacer de nuevo el llamado al endpoint para obtener la ubicación de los archivos
   };
 
@@ -94,7 +98,7 @@ const UbicacionCarpetas = () => {
                 <p>{appData ? appData.App1 : 'Loading...'}</p>
                 <input
                   type="text"
-                  placeholder="Definir la ubicación de la carpeta"
+                  placeholder="Define la nueva ubicación de tus archivos"
                   value={nuevaUbicacion.App1}
                   onChange={(e) => handleInputChange(e, 'App1')}
                 />
