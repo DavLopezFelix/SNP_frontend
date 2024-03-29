@@ -70,6 +70,11 @@ const UbicacionCarpetas = () => {
 
   const closePopup = () => {
     setSuccessMessage('');
+    setNuevaUbicacion({ // Limpiar los campos de entrada
+      App1: '',
+      App2: '',
+      App3: ''
+    });
     fetchData(); // Hacer de nuevo el llamado al endpoint para obtener la ubicación de los archivos
   };
 
