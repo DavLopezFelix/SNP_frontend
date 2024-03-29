@@ -4,6 +4,7 @@ function Descargas() {
   const [temporadas, setTemporadas] = useState([]);
   const [selectedTemporada, setSelectedTemporada] = useState('');
   const [rankingData, setRankingData] = useState(null);
+  const [error, setError] = useState('');
   const apiKey = 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO';
 
   useEffect(() => {
@@ -31,9 +32,15 @@ function Descargas() {
 
   const handleChange = (event) => {
     setSelectedTemporada(event.target.value);
+    setError('');
   };
 
   const handleDownload = async () => {
+    if (!selectedTemporada) {
+      setError('Seleccione la temporada');
+      return;
+    }
+
     try {
       const response = await fetch(`https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/downloadFiles/rankings?temporada=${selectedTemporada}`, {
         headers: {
@@ -68,7 +75,8 @@ function Descargas() {
           </option>
         ))}
       </select>
-      <button onClick={handleDownload}>Descargar Ranking</button>
+      <button onClick={handleDownload}>Descarga Ranking</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {rankingData && (
         <div>
           {/* Renderizar los datos de ranking aquí */}
