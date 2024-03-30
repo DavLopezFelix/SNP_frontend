@@ -11,6 +11,7 @@ function LongitudPeso() {
   const [valorBInput, setValorBInput] = useState('');
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false); // Nuevo estado para controlar la visibilidad del mensaje de error
 
   useEffect(() => {
     fetchTemporadaInfo();
@@ -37,6 +38,8 @@ function LongitudPeso() {
 
   const handleInputChange = (event, setter) => {
     setter(event.target.value);
+    // Ocultar el mensaje de error cuando el usuario comienza a escribir en los input box
+    setShowErrorMessage(false);
   };
 
   const handleEnviarClick = () => {
@@ -45,8 +48,7 @@ function LongitudPeso() {
       setShowConfirmation(true);
     } else {
       // Mostrar mensaje de error
-      const errorMessage = document.getElementById('errorMessage');
-      errorMessage.style.display = 'block';
+      setShowErrorMessage(true);
     }
   };
 
@@ -74,6 +76,10 @@ function LongitudPeso() {
       const data = await response.json();
       setTemporadaInfo(data);
       setShowSuccessMessage(true);
+      // Limpiar los valores de los input box
+      setTemporadaInput('');
+      setValorAInput('');
+      setValorBInput('');
     } catch (error) {
       setError(error);
     }
@@ -130,7 +136,7 @@ function LongitudPeso() {
             </div>
             <button onClick={handleEnviarClick}>Enviar</button>
             {/* Mensaje de error */}
-            <div id="errorMessage" style={{ color: 'red', display: 'none' }}>Falta completar los datos.</div>
+            {showErrorMessage && <div style={{ color: 'red' }}>Falta completar los datos.</div>}
             {showConfirmation && (
               <PopupConfirm
                 message="¿Está seguro que este es el nombre que quiere ponerle a la temporada?"
