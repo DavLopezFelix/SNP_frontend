@@ -40,7 +40,14 @@ function LongitudPeso() {
   };
 
   const handleEnviarClick = () => {
-    setShowConfirmation(true);
+    // Verificar si los tres valores están completos
+    if (temporadaInput.trim() !== '' && valorAInput.trim() !== '' && valorBInput.trim() !== '') {
+      setShowConfirmation(true);
+    } else {
+      // Mostrar mensaje de error
+      const errorMessage = document.getElementById('errorMessage');
+      errorMessage.style.display = 'block';
+    }
   };
 
   const handleConfirmOk = async () => {
@@ -122,6 +129,8 @@ function LongitudPeso() {
               />
             </div>
             <button onClick={handleEnviarClick}>Enviar</button>
+            {/* Mensaje de error */}
+            <div id="errorMessage" style={{ color: 'red', display: 'none' }}>Falta completar los datos.</div>
             {showConfirmation && (
               <PopupConfirm
                 message="¿Está seguro que este es el nombre que quiere ponerle a la temporada?"
