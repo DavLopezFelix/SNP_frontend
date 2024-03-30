@@ -3,13 +3,7 @@ import Boton from '../nortecentro/boton';
 import '../componentsclient/estilosregiones.css'; 
 import UbicacionCarpetas from '../nortecentrosesionsnp/ubicacioncarpetas';
 import Descargas from '../nortecentrosesionsnp/descargas';
-
-const LongitudPeso = () => (
-  <div className="mensaje">
-    Aquí encontrará la Longitud Peso.
-  </div>
-);
-
+import LongitudPeso from '../nortecentrosesionsnp/longitudpeso';
 
 const RegionNorteCentroSNP = () => {
     const [mostrarLongitudPeso, setMostrarLongitudPeso] = useState(true); // Inicialmente mostramos Reportes de empresa
