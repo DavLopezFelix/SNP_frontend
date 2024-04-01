@@ -1,7 +1,10 @@
+// LongitudPeso.js
 import React, { useState, useEffect } from 'react';
 import './ubicacioncarpeta.css';
+import './longitudpeso.css'; // Importa el archivo de estilos CSS para LongitudPeso
 import PopupConfirm from './pupupconfirm'; // Importa el componente PopupConfirm
 import PopupSuccess from './popupsucces';
+import './longitudpeso.css';
 
 function LongitudPeso() {
   const [temporadaInfo, setTemporadaInfo] = useState(null);
@@ -11,7 +14,8 @@ function LongitudPeso() {
   const [valorBInput, setValorBInput] = useState('');
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showErrorMessage, setShowErrorMessage] = useState(false); // Nuevo estado para controlar la visibilidad del mensaje de error
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [showEditMessage, setShowEditMessage] = useState(false);
 
   useEffect(() => {
     fetchTemporadaInfo();
@@ -31,6 +35,8 @@ function LongitudPeso() {
 
       const data = await response.json();
       setTemporadaInfo(data);
+      setValorAInput(data.A.toString()); // Asignar valor inicial de A
+      setValorBInput(data.B.toString()); // Asignar valor inicial de B
     } catch (error) {
       setError(error);
     }
@@ -38,25 +44,21 @@ function LongitudPeso() {
 
   const handleInputChange = (event, setter) => {
     setter(event.target.value);
-    // Ocultar el mensaje de error cuando el usuario comienza a escribir en los input box
     setShowErrorMessage(false);
+    setShowEditMessage(false);
   };
 
   const handleEnviarClick = () => {
-    // Verificar si los tres valores están completos
     if (temporadaInput.trim() !== '' && valorAInput.trim() !== '' && valorBInput.trim() !== '') {
       setShowConfirmation(true);
     } else {
-      // Mostrar mensaje de error
       setShowErrorMessage(true);
     }
   };
 
   const handleEditarClick = () => {
-    // Verificar si los valores de temporada están vacíos
     if (temporadaInput.trim() !== '') {
-      // Mostrar mensaje de error
-      setShowErrorMessage(true);
+      setShowEditMessage(true);
     } else {
       // Permitir editar los valores de A y B
       setValorAInput(temporadaInfo.A.toString());
@@ -88,7 +90,6 @@ function LongitudPeso() {
       const data = await response.json();
       setTemporadaInfo(data);
       setShowSuccessMessage(true);
-      // Limpiar los valores de los input box
       setTemporadaInput('');
       setValorAInput('');
       setValorBInput('');
@@ -103,7 +104,7 @@ function LongitudPeso() {
 
   const handleCloseSuccessPopup = async () => {
     setShowSuccessMessage(false);
-    await fetchTemporadaInfo(); // Actualizar los datos de temporada después de cerrar el popup de éxito
+    await fetchTemporadaInfo();
   };
 
   if (error) {
@@ -111,8 +112,8 @@ function LongitudPeso() {
   }
 
   return (
-    <div className="container">
-      <div className="box">
+    <div className="container" style={{ textAlign: 'center' }}>
+      <div className="box" style={{ width: '50%', margin: 'auto', padding: '20px' }}>
         {temporadaInfo ? (
           <div>
             <h2>Información de Temporada</h2>
@@ -120,36 +121,49 @@ function LongitudPeso() {
               <p>Fecha: {temporadaInfo.date}</p>
             </div>
             <div>
-              <p>Temporada: {temporadaInfo.temporada}</p>
+              <p>{temporadaInfo.temporada}</p>
               <input
                 type="text"
                 value={temporadaInput}
                 onChange={(e) => handleInputChange(e, setTemporadaInput)}
                 placeholder="Nuevo temporada"
+                style={{ fontSize: '14px' }}
               />
             </div>
             <div>
-              <p>Valor A: {temporadaInfo.A}</p>
+              <p>a: {temporadaInfo.A}</p>
               <input
                 type="text"
                 value={valorAInput}
                 onChange={(e) => handleInputChange(e, setValorAInput)}
                 placeholder="Nuevo valor A"
+                style={{ fontSize: '14px' }}
               />
             </div>
             <div>
-              <p>Valor B: {temporadaInfo.B}</p>
+              <p>b: {temporadaInfo.B}</p>
               <input
                 type="text"
                 value={valorBInput}
                 onChange={(e) => handleInputChange(e, setValorBInput)}
                 placeholder="Nuevo valor B"
+                style={{ fontSize: '14px' }}
               />
             </div>
-            <button onClick={handleEnviarClick}>Enviar</button>
-            <button onClick={handleEditarClick}>Editar a y b</button> {/* Botón para editar a y b */}
-            {/* Mensaje de error */}
-            {showErrorMessage && <div style={{ color: 'red' }}>Falta completar los datos o no se puede editar la temporada.</div>}
+            <button 
+              className="button-primary" 
+              onClick={handleEnviarClick}
+            >
+              Enviar
+            </button>
+            <button 
+              className="button-primary" 
+              onClick={handleEditarClick}
+            >
+              Editar a y b
+            </button>
+            {showErrorMessage && <div className="error-message">Falta completar los datos.</div>}
+            {showEditMessage && <div className="error-message">Solo se puede editar los datos de a y b.</div>}
             {showConfirmation && (
               <PopupConfirm
                 message="¿Está seguro que este es el nombre que quiere ponerle a la temporada?"

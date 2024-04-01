@@ -1,0 +1,31 @@
+/* longitudpeso.css */
+.container {
+    text-align: center; /* Centra todo el contenido dentro del contenedor */
+  }
+  
+  .box {
+    width: 50%;
+    margin: auto; /* Centra el cuadro en el medio */
+    padding: 20px;
+  }
+  
+  .button-primary {
+    background-color: #00789C;
+    color: white;
+    margin: 10px;
+    padding: 5px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  input[type="text"] {
+    font-size: 12px; /* Tamaño de fuente más pequeño para los input box */
+  }
+  
