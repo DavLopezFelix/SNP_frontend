@@ -52,6 +52,18 @@ function LongitudPeso() {
     }
   };
 
+  const handleEditarClick = () => {
+    // Verificar si los valores de temporada están vacíos
+    if (temporadaInput.trim() !== '') {
+      // Mostrar mensaje de error
+      setShowErrorMessage(true);
+    } else {
+      // Permitir editar los valores de A y B
+      setValorAInput(temporadaInfo.A.toString());
+      setValorBInput(temporadaInfo.B.toString());
+    }
+  };
+
   const handleConfirmOk = async () => {
     setShowConfirmation(false);
 
@@ -135,8 +147,9 @@ function LongitudPeso() {
               />
             </div>
             <button onClick={handleEnviarClick}>Enviar</button>
+            <button onClick={handleEditarClick}>Editar a y b</button> {/* Botón para editar a y b */}
             {/* Mensaje de error */}
-            {showErrorMessage && <div style={{ color: 'red' }}>Falta completar los datos.</div>}
+            {showErrorMessage && <div style={{ color: 'red' }}>Falta completar los datos o no se puede editar la temporada.</div>}
             {showConfirmation && (
               <PopupConfirm
                 message="¿Está seguro que este es el nombre que quiere ponerle a la temporada?"
