@@ -1,4 +1,3 @@
-// LongitudPeso.js
 import React, { useState, useEffect } from 'react';
 import './ubicacioncarpeta.css';
 import './longitudpeso.css'; // Importa el archivo de estilos CSS para LongitudPeso
@@ -105,6 +104,9 @@ function LongitudPeso() {
   const handleCloseSuccessPopup = async () => {
     setShowSuccessMessage(false);
     await fetchTemporadaInfo();
+    setTemporadaInput('');
+    setValorAInput('');
+    setValorBInput('');
   };
 
   if (error) {

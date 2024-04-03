@@ -45,7 +45,7 @@ const UbicacionCarpetas = () => {
 
   const enviarDatos = async () => {
     if (!inputModified) { // Verifica si se han modificado los campos de entrada
-      setErrorMessage('Ingrese almenos una nueva ubicación'); // Establece el mensaje de error si no se ha modificado ningún campo
+      setErrorMessage('Ingrese al menos una nueva ubicación'); // Establece el mensaje de error si no se ha modificado ningún campo
       return;
     }
     try {
@@ -120,7 +120,7 @@ const UbicacionCarpetas = () => {
                 <p>{appData ? appData.App2 : 'Loading...'}</p>
                 <input
                   type="text"
-                  placeholder="Definir la ubicación de la carpeta"
+                  placeholder="Define la nueva ubicación de tus archivos"
                   value={nuevaUbicacion.App2}
                   onChange={(e) => handleInputChange(e, 'App2')}
                 />
@@ -142,7 +142,7 @@ const UbicacionCarpetas = () => {
                 <p>{appData ? appData.App3 : 'Loading...'}</p>
                 <input
                   type="text"
-                  placeholder="Definir la ubicación de la carpeta"
+                  placeholder="Define la nueva ubicación de tus archivos"
                   value={nuevaUbicacion.App3}
                   onChange={(e) => handleInputChange(e, 'App3')}
                 />
