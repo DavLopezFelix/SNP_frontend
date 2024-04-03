@@ -138,7 +138,27 @@
   
   .loading-message {
     font-style: italic;
+    position: absolute; /* Cambia la posición a absoluta */
+    top: calc(100% + 40px); /* Ubica el primer mensaje debajo del botón */
+    left: 50%; /* Lo centra horizontalmente */
+    transform: translateX(-50%); /* Lo centra completamente */
   }
+  .loading-message1 {
+    font-style: italic;
+    position: absolute; /* Cambia la posición a absoluta */
+    top: calc(100% + 40px); /* Ubica el primer mensaje debajo del botón */
+    left: 50%; /* Lo centra horizontalmente */
+    transform: translateX(-50%); /* Lo centra completamente */
+  }
+  
+  .loading-message2 {
+    font-style: italic;
+    position: absolute; /* Cambia la posición a absoluta */
+    top: calc(100% + 80px); /* Ubica el segundo mensaje debajo del primer mensaje */
+    left: 50%; /* Lo centra horizontalmente */
+    transform: translateX(-50%); /* Lo centra completamente */
+  }
+  
   
   .data-container {
     margin-top: 20px;

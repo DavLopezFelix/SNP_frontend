@@ -175,13 +175,13 @@ function Descargas() {
           {/* Renderizar los datos de ranking aquí */}
         </div>
       )}
-      {loadingCruda && <p className="loading-message">Cargando Data Cruda...</p>}
+      {loadingCruda && <p className="loading-message1">Cargando Data Cruda...</p>}
       {dataCruda && (
         <div className="data-container">
           {/* Renderizar los datos de ranking aquí */}
         </div>
       )}
-      {loadingConsolidada && <p className="loading-message">Cargando Data Consolidada...</p>}
+      {loadingConsolidada && <p className="loading-message2">Cargando Data Consolidada...</p>}
       {dataConsolidada && (
         <div className="data-container">
           {/* Renderizar los datos de ranking aquí */}
