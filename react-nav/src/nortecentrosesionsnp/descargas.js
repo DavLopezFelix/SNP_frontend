@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './ubicacioncarpeta.css'; // Asegúrate de importar los estilos CSS adecuados
 import PopupMessage from './popupmessage'; // Importa el componente PopupMessage
+import './descargas.css';
 
 function Descargas() {
   const [temporadas, setTemporadas] = useState([]);
@@ -78,7 +78,13 @@ function Descargas() {
     }
   };
 
+ 
   const handleDownloadData = async () => {
+    if (!selectedTemporada) {
+        setError('Seleccione la temporada');
+        return;
+      }
+
     try {
       setLoadingCruda(true);
       setLoadingConsolidada(true);
@@ -112,6 +118,12 @@ function Descargas() {
     }
   };      
 
+  const handleDownloadImarpe = () => {
+    // Lógica para descargar desde IMARPE
+    // Por ahora, vamos a simular una alerta
+    // alert('Descargando desde IMARPE...');
+  };
+
   const closePopup = () => {
     setShowPopup(false); // Ocultar el mensaje emergente al cerrarlo
     setConfirmationMessage('');
@@ -119,38 +131,59 @@ function Descargas() {
 
   return (
     <div>
-      <h1>Temporadas</h1>
-      <select value={selectedTemporada} onChange={handleChange}>
-        <option value="" disabled>Seleccione temporada</option>
-        {temporadas.map((temporada, index) => (
-          <option key={index} value={temporada}>
-            {temporada}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleDownloadRanking} disabled={loadingRanking || loadingCruda || loadingConsolidada}>
-        Descargar Ranking
-      </button>
-      <button onClick={handleDownloadData} disabled={loadingRanking || loadingCruda || loadingConsolidada}>
-        Descargar Data Cruda y Data Consolidada
-      </button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <div className="descargas-container">
+        {/* <h1>Descargas</h1> */}
+        <select className="select-dropdown" value={selectedTemporada} onChange={handleChange}>
+            <option value="" disabled>Seleccione temporada</option>
+            {temporadas.map((temporada, index) => (
+              <option key={index} value={temporada}>
+                {temporada}
+              </option>
+            ))}
+          </select>
+      </div>
+      <div className="table-wrapper">
+        <table className="options-table">
+          <tbody>
+            <tr>
+              <th>Ranking</th>
+              <th>Data cruda y data consolidada</th>
+              <th>IMARPE</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="buttons-wrapper">
+
+        <button className="button1" onClick={handleDownloadRanking} disabled={loadingRanking || loadingCruda || loadingConsolidada}>
+          Descargar 
+        </button>
+        <button className="button2" onClick={handleDownloadData} disabled={loadingRanking || loadingCruda || loadingConsolidada}>
+          Descargar 
+        </button>
+        <button className="button3" onClick={handleDownloadImarpe} disabled={loadingRanking || loadingCruda || loadingConsolidada}>
+          Descargar
+        </button>
+      </div>
+      <div className="error-container">
+      {error && <p className="error-message">{error}</p>}
+      </div>
       {showPopup && <PopupMessage message={confirmationMessage} onClose={closePopup} />} {/* Mostrar el mensaje emergente */}
-      {loadingRanking && <p>Cargando Ranking...</p>}
+      {loadingRanking && <p className="loading-message">Cargando Ranking...</p>}
       {rankingData && (
-        <div>
+        <div className="data-container">
           {/* Renderizar los datos de ranking aquí */}
         </div>
       )}
-      {loadingCruda && <p>Cargando Data Cruda...</p>}
+      {loadingCruda && <p className="loading-message">Cargando Data Cruda...</p>}
       {dataCruda && (
-        <div>
+        <div className="data-container">
           {/* Renderizar los datos de ranking aquí */}
         </div>
       )}
-      {loadingConsolidada && <p>Cargando Data Consolidada...</p>}
+      {loadingConsolidada && <p className="loading-message">Cargando Data Consolidada...</p>}
       {dataConsolidada && (
-        <div>
+        <div className="data-container">
           {/* Renderizar los datos de ranking aquí */}
         </div>
       )}
