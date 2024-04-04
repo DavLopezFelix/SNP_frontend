@@ -11,6 +11,7 @@ function LongitudPeso() {
   const [errorMessage, setErrorMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [temporadaToConfirm, setTemporadaToConfirm] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -39,6 +40,7 @@ function LongitudPeso() {
       return;
     }
 
+    setTemporadaToConfirm(temporadaInput);
     setShowPopup(true);
   };
 
@@ -113,7 +115,7 @@ function LongitudPeso() {
       <button onClick={handleSubmit}>Enviar</button>
       {showPopup && (
         <PopupConfirm
-          message="¿Está seguro que este es el nombre que quiere ponerle a la temporada?"
+          message={`¿Está seguro que "${temporadaToConfirm}" es el nombre que quiere ponerle a la temporada ?`}
           onConfirm={handleConfirm}
           onCancel={handleCancel}
         />
