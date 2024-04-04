@@ -169,19 +169,19 @@ function Descargas() {
       {error && <p className="error-message">{error}</p>}
       </div>
       {showPopup && <PopupMessage message={confirmationMessage} onClose={closePopup} />} {/* Mostrar el mensaje emergente */}
-      {loadingRanking && <p className="loading-message">Cargando Ranking...</p>}
+      {loadingRanking && <p className="loading-message">Descargando Ranking...</p>}
       {rankingData && (
         <div className="data-container">
           {/* Renderizar los datos de ranking aquí */}
         </div>
       )}
-      {loadingCruda && <p className="loading-message1">Cargando Data Cruda...</p>}
+      {loadingCruda && <p className="loading-message1">Descargando Data Cruda...</p>}
       {dataCruda && (
         <div className="data-container">
           {/* Renderizar los datos de ranking aquí */}
         </div>
       )}
-      {loadingConsolidada && <p className="loading-message2">Cargando Data Consolidada...</p>}
+      {loadingConsolidada && <p className="loading-message2">Descargando Data Consolidada...</p>}
       {dataConsolidada && (
         <div className="data-container">
           {/* Renderizar los datos de ranking aquí */}
