@@ -82,6 +82,27 @@ function LongitudPeso() {
     setShowSuccessMessage(false);
   };
 
+  const handleEdit = async () => {
+    try {
+      await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/aybVariables', {
+        method: 'POST',
+        headers: {
+          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          A: parseFloat(aInput),
+          B: parseFloat(bInput)
+        })
+      });
+
+      // Optionally you can show a success message here if needed
+
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <div className="App">
       <h1>Resultados de la llamada a la API</h1>
@@ -109,10 +130,11 @@ function LongitudPeso() {
             value={bInput}
             onChange={(e) => setBInput(e.target.value)}
           />
+          <button onClick={handleSubmit}>Enviar</button>
+          <button onClick={handleEdit}>Editar</button>
         </div>
       )}
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      <button onClick={handleSubmit}>Enviar</button>
       {showPopup && (
         <PopupConfirm
           message={`¿Está seguro que "${temporadaToConfirm}" es el nombre que quiere ponerle a la temporada ?`}
