@@ -1,189 +1,129 @@
 import React, { useState, useEffect } from 'react';
-import './ubicacioncarpeta.css';
-import './longitudpeso.css'; // Importa el archivo de estilos CSS para LongitudPeso
-import PopupConfirm from './pupupconfirm'; // Importa el componente PopupConfirm
+import PopupConfirm from './pupupconfirm';
 import PopupSuccess from './popupsucces';
-import './longitudpeso.css';
 
 function LongitudPeso() {
-  const [temporadaInfo, setTemporadaInfo] = useState(null);
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [temporadaInput, setTemporadaInput] = useState('');
-  const [valorAInput, setValorAInput] = useState('');
-  const [valorBInput, setValorBInput] = useState('');
-  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [aInput, setAInput] = useState('');
+  const [bInput, setBInput] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showErrorMessage, setShowErrorMessage] = useState(false);
-  const [showEditMessage, setShowEditMessage] = useState(false);
 
   useEffect(() => {
-    fetchTemporadaInfo();
+    fetchData();
   }, []);
 
-  const fetchTemporadaInfo = async () => {
+  const fetchData = async () => {
     try {
       const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/lastTemporada', {
         headers: {
           'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
         }
       });
-
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Failed to fetch data');
       }
-
-      const data = await response.json();
-      setTemporadaInfo(data);
-      setValorAInput(data.A.toString()); // Asignar valor inicial de A
-      setValorBInput(data.B.toString()); // Asignar valor inicial de B
+      const jsonData = await response.json();
+      setData(jsonData);
     } catch (error) {
-      setError(error);
+      setError(error.message);
     }
   };
 
-  const handleInputChange = (event, setter) => {
-    setter(event.target.value);
-    setShowErrorMessage(false);
-    setShowEditMessage(false);
-  };
-
-  const handleEnviarClick = () => {
-    if (temporadaInput.trim() !== '' && valorAInput.trim() !== '' && valorBInput.trim() !== '') {
-      setShowConfirmation(true);
-    } else {
-      setShowErrorMessage(true);
+  const handleSubmit = async () => {
+    if (!temporadaInput || !aInput || !bInput) {
+      setErrorMessage('Por favor, complete todos los campos.');
+      return;
     }
+
+    setShowPopup(true);
   };
 
-  const handleEditarClick = () => {
-    if (temporadaInput.trim() !== '') {
-      setShowEditMessage(true);
-    } else {
-      // Permitir editar los valores de A y B
-      setValorAInput(temporadaInfo.A.toString());
-      setValorBInput(temporadaInfo.B.toString());
-    }
-  };
-
-  const handleConfirmOk = async () => {
-    setShowConfirmation(false);
-
+  const handleConfirm = async () => {
     try {
-      const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/lastTemporada', {
+      await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/lastTemporada', {
         method: 'POST',
         headers: {
           'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          temporada: temporadaInput || temporadaInfo.temporada,
-          A: valorAInput || temporadaInfo.A,
-          B: valorBInput || temporadaInfo.B
+          temporada: temporadaInput,
+          A: parseFloat(aInput),
+          B: parseFloat(bInput)
         })
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+      // Refetch data to update UI after submission
+      fetchData();
 
-      const data = await response.json();
-      setTemporadaInfo(data);
-      setShowSuccessMessage(true);
+      // Clear input fields and error message
       setTemporadaInput('');
-      setValorAInput('');
-      setValorBInput('');
+      setAInput('');
+      setBInput('');
+      setErrorMessage('');
+      setShowPopup(false);
+      setShowSuccessMessage(true);
     } catch (error) {
-      setError(error);
+      setError(error.message);
     }
   };
 
-  const handleConfirmCancel = () => {
-    setShowConfirmation(false);
+  const handleCancel = () => {
+    setShowPopup(false);
   };
 
-  const handleCloseSuccessPopup = async () => {
+  const handleCloseSuccessPopup = () => {
     setShowSuccessMessage(false);
-    await fetchTemporadaInfo();
-    setTemporadaInput('');
-    setValorAInput('');
-    setValorBInput('');
   };
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
 
   return (
-    <div className="container" style={{ textAlign: 'center' }}>
-      <div className="box" style={{ width: '50%', margin: 'auto', padding: '20px' }}>
-        {temporadaInfo ? (
-          <div>
-            <h2>Información de Temporada</h2>
-            <div>
-              <p>Fecha: {temporadaInfo.date}</p>
-            </div>
-            <div>
-              <p>{temporadaInfo.temporada}</p>
-              <input
-                type="text"
-                value={temporadaInput}
-                onChange={(e) => handleInputChange(e, setTemporadaInput)}
-                placeholder="Nuevo temporada"
-                style={{ fontSize: '14px' }}
-              />
-            </div>
-            <div>
-              <p>a: {temporadaInfo.A}</p>
-              <input
-                type="text"
-                value={valorAInput}
-                onChange={(e) => handleInputChange(e, setValorAInput)}
-                placeholder="Nuevo valor A"
-                style={{ fontSize: '14px' }}
-              />
-            </div>
-            <div>
-              <p>b: {temporadaInfo.B}</p>
-              <input
-                type="text"
-                value={valorBInput}
-                onChange={(e) => handleInputChange(e, setValorBInput)}
-                placeholder="Nuevo valor B"
-                style={{ fontSize: '14px' }}
-              />
-            </div>
-            <button 
-              className="button-primary" 
-              onClick={handleEnviarClick}
-            >
-              Enviar
-            </button>
-            <button 
-              className="button-primary" 
-              onClick={handleEditarClick}
-            >
-              Editar a y b
-            </button>
-            {showErrorMessage && <div className="error-message">Falta completar los datos.</div>}
-            {showEditMessage && <div className="error-message">Solo se puede editar los datos de a y b.</div>}
-            {showConfirmation && (
-              <PopupConfirm
-                message="¿Está seguro que este es el nombre que quiere ponerle a la temporada?"
-                onConfirm={handleConfirmOk}
-                onCancel={handleConfirmCancel}
-              />
-            )}
-            {showSuccessMessage && (
-              <PopupSuccess
-                message="Datos enviados con éxito"
-                onClose={handleCloseSuccessPopup}
-              />
-            )}
-          </div>
-        ) : (
-          <div>Cargando...</div>
-        )}
-      </div>
+    <div className="App">
+      <h1>Resultados de la llamada a la API</h1>
+      {error && <p>Error: {error}</p>}
+      {data && (
+        <div>
+          <p>Temporada: {data.temporada}</p>
+          <input
+            type="text"
+            placeholder="Nuevo valor de temporada"
+            value={temporadaInput}
+            onChange={(e) => setTemporadaInput(e.target.value)}
+          />
+          <p>Valor de A: {data.A}</p>
+          <input
+            type="number"
+            placeholder="Nuevo valor de A"
+            value={aInput}
+            onChange={(e) => setAInput(e.target.value)}
+          />
+          <p>Valor de B: {data.B}</p>
+          <input
+            type="number"
+            placeholder="Nuevo valor de B"
+            value={bInput}
+            onChange={(e) => setBInput(e.target.value)}
+          />
+        </div>
+      )}
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      <button onClick={handleSubmit}>Enviar</button>
+      {showPopup && (
+        <PopupConfirm
+          message="¿Está seguro que este es el nombre que quiere ponerle a la temporada?"
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+        />
+      )}
+      {showSuccessMessage && (
+        <PopupSuccess
+          message="Datos enviados con éxito"
+          onClose={handleCloseSuccessPopup}
+        />
+      )}
     </div>
   );
 }
