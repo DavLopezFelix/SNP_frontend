@@ -46,6 +46,14 @@ function LongitudPeso() {
     setShowPopup(true);
   };
 
+  const handleEditDecision = async () => {
+    if (!aInput || !bInput || temporadaInput) {
+      setErrorMessage('Por favor, Inserte solo los valores de A y B.');
+      return;
+    }
+    handleEdit();
+  };
+
   const handleConfirm = async () => {
     try {
       await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/lastTemporada', {
@@ -142,7 +150,7 @@ function LongitudPeso() {
             onChange={(e) => setBInput(e.target.value)}
           />
           <button onClick={handleSubmit}>Enviar</button>
-          <button onClick={handleEdit}>Editar</button>
+          <button onClick={handleEditDecision}>Editar</button>
         </div>
       )}
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
