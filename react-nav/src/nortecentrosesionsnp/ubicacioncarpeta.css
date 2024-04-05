@@ -5,7 +5,7 @@
     width: 95%;
     max-width: 1294px;
     margin: 0 auto;
-    height: 100vh;
+    height: 110vh;
   }
   
   .ubicacion-carpetas-container {
@@ -42,17 +42,23 @@
     vertical-align: middle;
   }
   
+  .ejecutar-button,
   .enviar-button {
     background-color: #00789C;
     color: white;
+    margin: 10px 5px;
+    padding: 9px 22px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
+    display: inline-block;
   }
   
   .enviar-button:hover {
+    background-color: #005c75;
+  }
+
+  .ejecutar-button:hover {
     background-color: #005c75;
   }
   
@@ -114,9 +120,16 @@
   .error-message {
     color: red; /* Establece el color del texto en rojo */
   }
+  /* .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    margin-left: 50px; 
+    margin-right: 50px; 
+  } */
   
-  
-  
+   
   /* Estilos para dispositivos móviles */
   @media only screen and (max-width: 600px) {
     .cuadro-grande {

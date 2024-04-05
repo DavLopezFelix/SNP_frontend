@@ -153,8 +153,9 @@ const UbicacionCarpetas = () => {
       </div>
       <div className="error-container"> {/* Nuevo contenedor para el mensaje de error */}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </div>
       <button className="enviar-button" onClick={enviarDatos}>Enviar</button>
+      <button className="ejecutar-button" onClick={enviarDatos}>Ejecutar la data ahora</button>
+      </div>
     </div>
   );
 };

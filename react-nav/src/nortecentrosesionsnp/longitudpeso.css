@@ -26,6 +26,13 @@
   border-radius: 5px;
   display: inline-block;
 }
+.button-enviar:hover {
+  background-color: #005c75;
+}
+
+.button-editar:hover {
+  background-color: #005c75;
+}
   
 .temporada-table {
   border-collapse: collapse;

@@ -127,6 +127,16 @@
     margin-right: 53px;
   }
   
+  .button1:hover {
+    background-color: #005c75;
+  }
+  .button2:hover {
+    background-color: #005c75;
+  }
+  .button3:hover {
+    background-color: #005c75;
+  }
+  
   .error-message {
     color: red;
   }
