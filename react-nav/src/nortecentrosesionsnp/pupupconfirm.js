@@ -1,6 +1,4 @@
-// PopupConfirm.js
 import React from 'react';
-
 
 const PopupConfirm = ({ message, onConfirm, onCancel }) => {
   return (
@@ -8,7 +6,7 @@ const PopupConfirm = ({ message, onConfirm, onCancel }) => {
       <div className="popup">
         <p>{message}</p>
         <div>
-          <button onClick={onConfirm}>Ok</button>
+          <button style={{ marginRight: '10px' }} onClick={onConfirm}>Ok</button>
           <button onClick={onCancel}>Cancelar</button>
         </div>
       </div>
