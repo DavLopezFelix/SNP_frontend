@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './reportesempresas.css'; // Importa tu archivo CSS para estilos personalizados
 
 function ReportesEmpresas() {
   const [rankingData, setRankingData] = useState(null);
@@ -29,9 +30,9 @@ function ReportesEmpresas() {
   }
 
   return (
-    <div>
+    <div className="table-container-ranking">
       <h2>Ranking - {rankingData.Temporada}</h2>
-      <table>
+      <table className="excel-like-table-ranking">
         <thead>
           <tr>
             <th>Empresa</th>
