@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PopupConfirm from './pupupconfirm';
 import PopupSuccess from './popupsucces';
 import PopupMessage from './popupmessage';
+import './longitudpeso.css';
 
 function LongitudPeso() {
   const [data, setData] = useState(null);
@@ -123,36 +124,62 @@ function LongitudPeso() {
   };
 
   return (
-    <div className="App">
-      <h1>Resultados de la llamada a la API</h1>
+    <div className="longitudpeso">
       {error && <p>Error: {error}</p>}
       {data && (
         <div>
-          <p>Temporada: {data.temporada}</p>
-          <input
-            type="text"
-            placeholder="Nuevo valor de temporada"
-            value={temporadaInput}
-            onChange={(e) => setTemporadaInput(e.target.value)}
-          />
-          <p>Valor de A: {data.A}</p>
-          <input
-            type="number"
-            placeholder="Nuevo valor de A"
-            value={aInput}
-            onChange={(e) => setAInput(e.target.value)}
-          />
-          <p>Valor de B: {data.B}</p>
-          <input
-            type="number"
-            placeholder="Nuevo valor de B"
-            value={bInput}
-            onChange={(e) => setBInput(e.target.value)}
-          />
-          <button onClick={handleSubmit}>Enviar</button>
-          <button onClick={handleEditDecision}>Editar</button>
+          <table className="temporada-table">
+            <thead>
+              <tr>
+                <th colSpan="2" style={{ backgroundColor: '#00B3A1', color: 'white', textAlign: 'center' }}>Temporada:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colSpan="2" style={{ textAlign: 'center' }}>
+                  <p>{data.temporada}</p>
+                  <input className="inputbox"
+                    type="text"
+                    placeholder="Nuevo valor de temporada"
+                    value={temporadaInput}
+                    onChange={(e) => setTemporadaInput(e.target.value)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th colSpan="2" style={{ backgroundColor: '#00B3A1', color: 'white', textAlign: 'center' }}>Valor de A:</th>
+              </tr>
+              <tr>
+                <td colSpan="2" style={{ textAlign: 'center' }}>
+                  <p>{data.A}</p>
+                  <input className="inputbox"
+                    type="number"
+                    placeholder="Nuevo valor de A"
+                    value={aInput}
+                    onChange={(e) => setAInput(e.target.value)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th colSpan="2" style={{ backgroundColor: '#00B3A1', color: 'white', textAlign: 'center' }}>Valor de B:</th>
+              </tr>
+              <tr>
+                <td colSpan="2" style={{ textAlign: 'center' }}>
+                  <p>{data.B}</p>
+                  <input className="inputbox"
+                    type="number"
+                    placeholder="Nuevo valor de B"
+                    value={bInput}
+                    onChange={(e) => setBInput(e.target.value)}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )}
+      <button className="button-enviar" onClick={handleSubmit}>Enviar</button>
+      <button className="button-editar" onClick={handleEditDecision}>Editar</button>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
       {showPopup && (
         <PopupConfirm

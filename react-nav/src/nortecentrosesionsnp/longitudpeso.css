@@ -1,31 +1,39 @@
-/* longitudpeso.css */
-.container {
-    text-align: center; /* Centra todo el contenido dentro del contenedor */
-  }
+.longitudpeso {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 42px;
+  text-align: center; /* Centra los elementos */
+}
+
+.inputbox {
+  width: calc(100% - 20px); /* Resta el espacio de los márgenes */
+  max-width: 220px; /* Limita el ancho */
+  padding: 8px; /* Reducir el padding para hacer los inputs más pequeños */
+  margin: 5px; /* Ajusta los márgenes */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+.button-enviar,
+.button-editar {
+  background-color: #00789C;
+  color: white;
+  margin: 20px 5px;
+  padding: 9px 22px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+}
   
-  .box {
-    width: 50%;
-    margin: auto; /* Centra el cuadro en el medio */
-    padding: 20px;
-  }
-  
-  .button-primary {
-    background-color: #00789C;
-    color: white;
-    margin: 10px;
-    padding: 5px 20px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  .error-message {
-    color: red;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-  
-  input[type="text"] {
-    font-size: 12px; /* Tamaño de fuente más pequeño para los input box */
-  }
-  
+.temporada-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.temporada-table th, .temporada-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}

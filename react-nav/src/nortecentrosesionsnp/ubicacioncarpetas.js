@@ -95,7 +95,7 @@ const UbicacionCarpetas = () => {
           <tbody>
             <tr>
               <td className="link-cell" colSpan="2">
-                <p>{appData ? appData.App1 : 'Loading...'}</p>
+                <p>{appData ? appData.App1: 'Loading...'}</p>
                 <input
                   type="text"
                   placeholder="Define la nueva ubicación de tus archivos"
