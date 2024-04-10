@@ -1,0 +1,176 @@
+/* Estilos para el contenedor de las descargas */
+.descargas-container {
+    text-align: center;
+    margin-bottom: 95px; /* Agrega margen inferior para bajar la tabla y los botones */
+  }
+  
+  /* Estilos para el contenedor del dropdown */
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Estilos para el botón select del dropdown */
+  .select-dropdown {
+    width: 200px;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 40px;
+    position: relative; /* Agrega posición relativa para controlar el menú desplegable */
+  }
+  
+  /* Estilos para el botón select del dropdown al pasar el mouse sobre él */
+  .select-dropdown:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Estilos para el indicador de flecha del dropdown */
+  .select-dropdown::after {
+    content: '\25BC'; /* Agrega una flecha hacia abajo al final del dropdown */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+  
+  /* Estilos para el menú desplegable */
+  .dropdown-options {
+    position: absolute;
+    top: calc(100% + 5px); /* Despliega las opciones hacia abajo */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none; /* Quita el borde superior */
+    border-radius: 0 0 5px 5px; /* Redondea solo los bordes inferiores */
+    z-index: 1; /* Asegura que el menú desplegable esté por encima de otros elementos */
+  }
+  
+  /* Estilos para cada opción del menú desplegable */
+  .dropdown-options li {
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para cada opción del menú desplegable al pasar el mouse sobre ella */
+  .dropdown-options li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  
+  .table-wrapper {
+    margin-bottom: 40px; /* Ajusta el margen inferior para bajar más la tabla */
+  }
+  
+  .options-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .options-table th {
+    background-color: #00B3A1;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .options-table th:not(:first-child) {
+    border-left: 2px solid white;
+  }
+  
+  .options-table td {
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .buttons-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px; /* Ajusta el margen inferior para bajar más los botones */
+  }
+  
+  .button1 {
+    background-color: #00789C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 55px;
+  }
+  .button2 {
+    background-color: #00789C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .button3 {
+    background-color: #00789C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 53px;
+  }
+  
+  .button1:hover {
+    background-color: #005c75;
+  }
+  .button2:hover {
+    background-color: #005c75;
+  }
+  .button3:hover {
+    background-color: #005c75;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  .error-container {
+    text-align: center;
+    margin-top: 20px; /* Ajusta el margen superior para centrar el mensaje */
+  }
+  
+  
+  .loading-message {
+    font-style: italic;
+    position: absolute; /* Cambia la posición a absoluta */
+    top: calc(100% + 1px); /* Ubica el primer mensaje debajo del botón */
+    left: 50%; /* Lo centra horizontalmente */
+    transform: translateX(-50%); /* Lo centra completamente */
+  }
+  .loading-message1 {
+    font-style: italic;
+    position: absolute; /* Cambia la posición a absoluta */
+    top: calc(100% + 5px); /* Ubica el primer mensaje debajo del botón */
+    left: 50%; /* Lo centra horizontalmente */
+    transform: translateX(-50%); /* Lo centra completamente */
+  }
+  
+  .loading-message2 {
+    font-style: italic;
+    position: absolute; /* Cambia la posición a absoluta */
+    top: calc(100% + 20px); /* Ubica el segundo mensaje debajo del primer mensaje */
+    left: 50%; /* Lo centra horizontalmente */
+    transform: translateX(-50%); /* Lo centra completamente */
+  }
+  
+  
+  .data-container {
+    margin-top: 20px;
+  }
+  

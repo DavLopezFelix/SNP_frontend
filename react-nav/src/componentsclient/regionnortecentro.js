@@ -2,12 +2,8 @@ import React, { useState } from 'react';
 import Boton from '../nortecentro/boton';
 import RankingPorPuntuacion from '../nortecentro/rankingpuntuacion'; // Asegúrate de reemplazar esta ruta con la ruta correcta
 import './estilosregiones.css'; 
+import ReportesEmpresas from '../nortecentro/reportesempresas'; 
 
-const ReportesEmpresas = () => (
-  <div className="mensaje">
-    Aquí encontrarás el Reportes de las empresas norte-centro.
-  </div>
-);
 
 const Regionnortecentro = () => {
     const [mostrarReportes, setMostrarReportes] = useState(true); // Inicialmente mostramos Reportes de empresa

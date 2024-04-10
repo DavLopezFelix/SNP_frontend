@@ -1,0 +1,42 @@
+.table-container-reportes {
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.excel-like-table-reportes {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.excel-like-table-reportes th {
+  background-color: #00B3A1; /* Color del encabezado de la tabla */
+  color: white; /* Texto del encabezado en color blanco */
+  padding: 10px;
+  text-align: center; /* Centra el texto de los encabezados */
+}
+
+.excel-like-table-reportes td {
+  background-color: white; /* Color del fondo de las celdas */
+  color: black; /* Color del texto en las celdas */
+  padding: 10px;
+  border: 1px solid #ddd; /* Borde de las celdas */
+  text-align: center; /* Centra el texto en las celdas */
+}
+
+.excel-like-table-reportes tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Color de fondo de las filas pares */
+}
+
+.excel-like-table-reportes tbody tr:nth-child(odd) {
+  background-color: white; /* Color de fondo de las filas impares */
+}
+
+.season-header {
+  text-align: center; /* Centra el texto de la temporada */
+  background-color: transparent; /* Fondo transparente */
+  border-bottom: 1px solid #ddd; /* Borde inferior para separar la temporada */
+}
+
+.table-header {
+  border-right: 1px solid #ddd; /* Borde derecho para separar las celdas */
+}

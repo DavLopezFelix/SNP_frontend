@@ -1,24 +1,9 @@
 import React, { useState } from 'react';
 import Boton from '../nortecentro/boton';
 import '../componentsclient/estilosregiones.css'; 
-
-const LongitudPeso = () => (
-  <div className="mensaje">
-    Aquí encontrará la LOngitud Peso.
-  </div>
-);
-
-const UbicacionCarpetas = () => (
-  <div className="mensaje">
-    Aquí encontrarás la Ubicacion de Carpetas.
-  </div>
-);
-
-const Descargas = () => (
-    <div className="mensaje">
-      Aquí encontrarás las descargas.
-    </div>
-  );
+import UbicacionCarpetas from '../nortecentrosesionsnp/ubicacioncarpetas';
+import Descargas from '../nortecentrosesionsnp/descargas';
+import LongitudPeso from '../nortecentrosesionsnp/longitudpeso';
 
 const RegionNorteCentroSNP = () => {
     const [mostrarLongitudPeso, setMostrarLongitudPeso] = useState(true); // Inicialmente mostramos Reportes de empresa

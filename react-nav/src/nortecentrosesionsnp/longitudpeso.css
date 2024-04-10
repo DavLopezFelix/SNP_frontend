@@ -1,0 +1,46 @@
+.longitudpeso {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 42px;
+  text-align: center; /* Centra los elementos */
+}
+
+.inputbox {
+  width: calc(100% - 20px); /* Resta el espacio de los márgenes */
+  max-width: 220px; /* Limita el ancho */
+  padding: 8px; /* Reducir el padding para hacer los inputs más pequeños */
+  margin: 5px; /* Ajusta los márgenes */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+.button-enviar,
+.button-editar {
+  background-color: #00789C;
+  color: white;
+  margin: 20px 5px;
+  padding: 9px 22px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+.button-enviar:hover {
+  background-color: #005c75;
+}
+
+.button-editar:hover {
+  background-color: #005c75;
+}
+  
+.temporada-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.temporada-table th, .temporada-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}

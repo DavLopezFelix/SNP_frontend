@@ -32,6 +32,7 @@
     font-size: 20px; /* Ajusta el tamaño del texto según necesites */
     margin-bottom: 0; 
     text-align: left;
+    margin-left: 15px;
 }
 .cuadro-grande {
     background-color: white;
@@ -40,7 +41,7 @@
     width: 95%;
     max-width: 1294px;
     margin: 0px auto;
-    height: 61vh;
+    height: 105vh;
   }
   /* Estilos para dispositivos móviles */
 @media only screen and (max-width: 600px) {
