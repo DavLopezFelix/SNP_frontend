@@ -30,15 +30,17 @@ function ReportesEmpresas() {
   }
 
   return (
-    <div className="table-container-ranking">
-      <h2>Ranking - {rankingData.Temporada}</h2>
-      <table className="excel-like-table-ranking">
+    <div className="table-container-reportes">
+      <table className="excel-like-table-reportes">
         <thead>
           <tr>
-            <th>Empresa</th>
-            <th>Calas</th>
-            <th>Faenas</th>
-            <th>Tallas</th>
+            <th colSpan="4" className="season-header"> {rankingData.Temporada}</th>
+          </tr>
+          <tr>
+            <th className="table-header">Empresa</th>
+            <th className="table-header">Calas</th>
+            <th className="table-header">Faenas</th>
+            <th className="table-header">Tallas</th>
           </tr>
         </thead>
         <tbody>
