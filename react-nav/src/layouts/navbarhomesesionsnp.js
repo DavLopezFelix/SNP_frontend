@@ -13,8 +13,14 @@ const NavbarHomeSesionsnp = ({ signOut }) => {
         if (signOut) {
             signOut();
         }
+    // Antes esta esto:
         // Redirige al usuario a la vista de autenticación
-        navigate('/sesionsnp');
+        // navigate('/sesionsnp');
+
+    // Ahora esto:
+        // Redirige al usuario a la vista principal
+        navigate('/');
+        // Hasta aquí
     }
 
     return (
