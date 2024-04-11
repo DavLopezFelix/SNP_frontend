@@ -71,6 +71,32 @@ const UbicacionCarpetas = () => {
     }
   };
 
+  const ejecutarAhora = async () => {
+    try {
+      const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/runProcess', {
+        method: 'GET',
+        headers: {
+          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
+          'Content-Type': 'application/json'
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const responseData = await response.json();
+      setSuccessMessage('¡Proceso iniciado con éxito!');
+      setErrorMessage('');
+      console.log('Response data:', responseData);
+
+      // Puedes manejar la respuesta de la API aquí si es necesario
+    } catch (error) {
+    setErrorMessage('Error al enviar los datos. Por favor, inténtalo de nuevo.');
+    setSuccessMessage('');
+      console.error('Error:', error);
+      // Puedes manejar el error aquí si es necesario
+    }
+  };
+
   const closePopup = () => {
     setSuccessMessage('');
     setNuevaUbicacion({ // Limpiar los campos de entrada
@@ -154,7 +180,7 @@ const UbicacionCarpetas = () => {
       <div className="error-container"> {/* Nuevo contenedor para el mensaje de error */}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       <button className="enviar-button" onClick={enviarDatos}>Enviar</button>
-      <button className="ejecutar-button" onClick={enviarDatos}>Ejecutar la data ahora</button>
+      <button className="ejecutar-button" onClick={ejecutarAhora}>Ejecutar Proceso</button>
       </div>
     </div>
   );
