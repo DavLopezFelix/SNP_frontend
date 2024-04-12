@@ -17,7 +17,7 @@ const UbicacionCarpetas = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${API_ur}/temporadasUbicaciones/appLocation`, {
+      const response = await fetch(`${API_url}/temporadasUbicaciones/appLocation`, {
         headers: {
           'x-api-key': apiKey
         }
@@ -51,7 +51,7 @@ const UbicacionCarpetas = () => {
       return;
     }
     try {
-      const response = await fetch(`${API_ur}/temporadasUbicaciones/appLocation`, {
+      const response = await fetch(`${API_url}/temporadasUbicaciones/appLocation`, {
         method: 'POST',
         headers: {
           'x-api-key': apiKey,
@@ -75,7 +75,7 @@ const UbicacionCarpetas = () => {
 
   const ejecutarAhora = async () => {
     try {
-      const response = await fetch(`${API_ur}/runProcess`, {
+      const response = await fetch(`${API_url}/runProcess`, {
         method: 'GET',
         headers: {
           'x-api-key': apiKey,

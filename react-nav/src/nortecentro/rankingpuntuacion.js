@@ -10,7 +10,7 @@ function RankingPorPuntuacion() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_ur}/ranking/general`, {
+        const response = await axios.get(`${API_url}/ranking/general`, {
           headers: {
             'x-api-key': apiKey
           }

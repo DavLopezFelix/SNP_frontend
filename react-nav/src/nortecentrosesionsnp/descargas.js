@@ -54,7 +54,7 @@ function Descargas() {
 
     try {
       setLoadingRanking(true);
-      const response = await fetch(`${API_ur}/downloadFiles/rankings?temporada=${selectedTemporada}`, {
+      const response = await fetch(`${API_url}/downloadFiles/rankings?temporada=${selectedTemporada}`, {
         headers: {
           'x-api-key': apiKey
         }
@@ -92,7 +92,7 @@ function Descargas() {
       setLoadingConsolidada(true);
   
       // Llamada a la segunda API para la data cruda y consolidada
-      const response = await fetch(`${API_ur}/downloadFiles/consolidadoAndProcesado?temporada=${selectedTemporada}`, {
+      const response = await fetch(`${API_url}/downloadFiles/consolidadoAndProcesado?temporada=${selectedTemporada}`, {
         headers: {
           'x-api-key': apiKey
         }

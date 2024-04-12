@@ -7,7 +7,7 @@ function ReportesEmpresas() {
   const [rankingData, setRankingData] = useState(null);
 
   useEffect(() => {
-    fetch(`${API_ur}/ranking/empresas`, {
+    fetch(`${API_url}/ranking/empresas`, {
       method: 'GET',
       headers: {
         'x-api-key': apiKey

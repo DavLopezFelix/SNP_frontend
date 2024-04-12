@@ -24,7 +24,7 @@ function LongitudPeso() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${API_ur}/temporadasUbicaciones/lastTemporada`, {
+      const response = await fetch(`${API_url}/temporadasUbicaciones/lastTemporada`, {
         headers: {
           'x-api-key': apiKey
         }
@@ -59,7 +59,7 @@ function LongitudPeso() {
 
   const handleConfirm = async () => {
     try {
-      await fetch(`${API_ur}/temporadasUbicaciones/lastTemporada`, {
+      await fetch(`${API_url}/temporadasUbicaciones/lastTemporada`, {
         method: 'POST',
         headers: {
           'x-api-key': apiKey,
@@ -97,7 +97,7 @@ function LongitudPeso() {
 
   const handleEdit = async () => {
     try {
-      await fetch(`${API_ur}/temporadasUbicaciones/aybVariables`, {
+      await fetch(`${API_url}/temporadasUbicaciones/aybVariables`, {
         method: 'POST',
         headers: {
           'x-api-key': apiKey,
