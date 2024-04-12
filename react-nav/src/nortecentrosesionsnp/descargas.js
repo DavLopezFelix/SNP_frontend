@@ -96,7 +96,7 @@ function Descargas() {
           'x-api-key': apiKey
         }
       });
-  
+      console.log(`${API_url}/downloadFiles/consolidadoAndProcesado?temporada=${selectedTemporada}`)
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
