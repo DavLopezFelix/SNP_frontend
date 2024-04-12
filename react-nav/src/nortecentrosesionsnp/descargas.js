@@ -90,7 +90,7 @@ function Descargas() {
       setLoadingConsolidada(true);
   
       // Llamada a la segunda API para la data cruda y consolidada
-      const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/downloadFiles/consolidadoAndProcesado?temporada=Temporada2024-II', {
+      const response = await fetch(`https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/downloadFiles/consolidadoAndProcesado?temporada=${selectedTemporada}`, {
         headers: {
           'x-api-key': apiKey
         }
