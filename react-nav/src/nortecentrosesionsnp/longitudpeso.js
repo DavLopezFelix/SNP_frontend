@@ -26,7 +26,7 @@ function LongitudPeso() {
     try {
       const response = await fetch(`${API_ur}/temporadasUbicaciones/lastTemporada`, {
         headers: {
-          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
+          'x-api-key': apiKey
         }
       });
       if (!response.ok) {
@@ -62,7 +62,7 @@ function LongitudPeso() {
       await fetch(`${API_ur}/temporadasUbicaciones/lastTemporada`, {
         method: 'POST',
         headers: {
-          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
+          'x-api-key': apiKey,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -100,7 +100,7 @@ function LongitudPeso() {
       await fetch(`${API_ur}/temporadasUbicaciones/aybVariables`, {
         method: 'POST',
         headers: {
-          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
+          'x-api-key': apiKey,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({

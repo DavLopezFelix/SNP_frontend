@@ -16,7 +16,7 @@ function Descargas() {
   const [error, setError] = useState('');
   const [confirmationMessage, setConfirmationMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false); // Estado para controlar la visibilidad del mensaje emergente
-  const apiKey = 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO';
+  const apiKey = apiKey;
 
   useEffect(() => {
     const fetchData = async () => {

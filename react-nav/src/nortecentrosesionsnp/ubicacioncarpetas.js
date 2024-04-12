@@ -19,7 +19,7 @@ const UbicacionCarpetas = () => {
     try {
       const response = await fetch(`${API_ur}/temporadasUbicaciones/appLocation`, {
         headers: {
-          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
+          'x-api-key': apiKey
         }
       });
       const responseData = await response.json();
@@ -54,7 +54,7 @@ const UbicacionCarpetas = () => {
       const response = await fetch(`${API_ur}/temporadasUbicaciones/appLocation`, {
         method: 'POST',
         headers: {
-          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
+          'x-api-key': apiKey,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(nuevaUbicacion)
@@ -78,7 +78,7 @@ const UbicacionCarpetas = () => {
       const response = await fetch(`${API_ur}/runProcess`, {
         method: 'GET',
         headers: {
-          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
+          'x-api-key': apiKey,
           'Content-Type': 'application/json'
         }
       });

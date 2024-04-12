@@ -12,7 +12,7 @@ function RankingPorPuntuacion() {
       try {
         const response = await axios.get(`${API_ur}/ranking/general`, {
           headers: {
-            'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
+            'x-api-key': apiKey
           }
         });
         setRankingData(response.data.Data);

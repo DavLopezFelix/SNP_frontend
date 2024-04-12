@@ -10,7 +10,7 @@ function ReportesEmpresas() {
     fetch(`${API_ur}/ranking/empresas`, {
       method: 'GET',
       headers: {
-        'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
+        'x-api-key': apiKey
       }
     })
       .then(response => {
