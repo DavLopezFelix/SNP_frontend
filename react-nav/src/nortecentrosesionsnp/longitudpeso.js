@@ -3,6 +3,8 @@ import PopupConfirm from './pupupconfirm';
 import PopupSuccess from './popupsucces';
 import PopupMessage from './popupmessage';
 import './longitudpeso.css';
+const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
+const API_url = process.env.REACT_APP_API_url;
 
 function LongitudPeso() {
   const [data, setData] = useState(null);
@@ -22,7 +24,7 @@ function LongitudPeso() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/lastTemporada', {
+      const response = await fetch(`${API_ur}/temporadasUbicaciones/lastTemporada`, {
         headers: {
           'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
         }
@@ -57,7 +59,7 @@ function LongitudPeso() {
 
   const handleConfirm = async () => {
     try {
-      await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/lastTemporada', {
+      await fetch(`${API_ur}/temporadasUbicaciones/lastTemporada`, {
         method: 'POST',
         headers: {
           'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
@@ -95,7 +97,7 @@ function LongitudPeso() {
 
   const handleEdit = async () => {
     try {
-      await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/aybVariables', {
+      await fetch(`${API_ur}/temporadasUbicaciones/aybVariables`, {
         method: 'POST',
         headers: {
           'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './nortecentro.css'; 
+import './nortecentro.css';
+const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
+const API_url = process.env.REACT_APP_API_url; 
 
 function RankingPorPuntuacion() {
   const [rankingData, setRankingData] = useState([]);
@@ -8,7 +10,7 @@ function RankingPorPuntuacion() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/ranking/general', {
+        const response = await axios.get(`${API_ur}/ranking/general`, {
           headers: {
             'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
           }

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './reportesempresas.css'; // Importa tu archivo CSS para estilos personalizados
+const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
+const API_url = process.env.REACT_APP_API_url;
 
 function ReportesEmpresas() {
   const [rankingData, setRankingData] = useState(null);
 
   useEffect(() => {
-    fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/ranking/empresas', {
+    fetch(`${API_ur}/ranking/empresas`, {
       method: 'GET',
       headers: {
         'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'

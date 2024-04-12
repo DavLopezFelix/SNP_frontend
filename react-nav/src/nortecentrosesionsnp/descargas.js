@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PopupMessage from './popupmessage'; // Importa el componente PopupMessage
 import './descargas.css';
+const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
+const API_url = process.env.REACT_APP_API_url;
 
 function Descargas() {
   const [temporadas, setTemporadas] = useState([]);
@@ -19,7 +21,7 @@ function Descargas() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/listTemporadas', {
+        const response = await fetch(`${API_url}/temporadasUbicaciones/listTemporadas`, {
           headers: {
             'x-api-key': apiKey
           }
@@ -52,7 +54,7 @@ function Descargas() {
 
     try {
       setLoadingRanking(true);
-      const response = await fetch(`https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/downloadFiles/rankings?temporada=${selectedTemporada}`, {
+      const response = await fetch(`${API_ur}/downloadFiles/rankings?temporada=${selectedTemporada}`, {
         headers: {
           'x-api-key': apiKey
         }
@@ -90,7 +92,7 @@ function Descargas() {
       setLoadingConsolidada(true);
   
       // Llamada a la segunda API para la data cruda y consolidada
-      const response = await fetch(`https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/downloadFiles/consolidadoAndProcesado?temporada=${selectedTemporada}`, {
+      const response = await fetch(`${API_ur}/downloadFiles/consolidadoAndProcesado?temporada=${selectedTemporada}`, {
         headers: {
           'x-api-key': apiKey
         }
