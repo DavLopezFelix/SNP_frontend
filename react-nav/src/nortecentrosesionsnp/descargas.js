@@ -24,7 +24,9 @@ function Descargas() {
             'x-api-key': apiKey
           }
         });
-
+        const apiKey2 = process.env.REACT_APP_client_secret
+        console.log('Aqui22')
+        console.log(apiKey2)
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
