@@ -41,32 +41,23 @@ function App() {
           </Route>
       
           
-          {/* Esto es lo que estaba antes:
-          <Route path='/sesionsnp/*' element={<NavbarSesionsnp />}>
-          <Route index element={<Sesionsnp />} />
-          </Route>
-            
-          <Route path='/RegionNorteCentroSNP/*' element={<NavbarHomeSesionsnp />}>
+          <Route path='/sesionsnp' element={<NavbarSesionsnp />}>
+
             <Route index element={<RegionNorteCentroSNP />} />
-          Hasta aquí */}
-
-
-          {/* Esto es lo que se agrego: */}
-            <Route path="sesionsnp/*" element={<NavbarHomeSesionsnp />}>
-            <Route index element={<Sesionsnp />} />
-            {/* Hasta aqui */}
-            <Route path='regionnortecentrosnp' element={<RegionNorteCentroSNP />} />
+            <Route  path='regionnortecentrosnp' element={<RegionNorteCentroSNP />} />
             <Route path='regionnortecentrosnp/longitudpeso' element={<LongitudPeso />} />
             <Route path='regionnortecentrosnp/ubicacioncarpetas' element={<UbicacionCarpetas />} />
             <Route path='regionnortecentrosnp/descargas' element={<Descargas />} />  
-                  
             <Route path='regionsursnp' element={<RegionSurSNP />} />
             <Route path='regionsursnp/longitudpesosur' element={<LongitudPesoSur />} />
             <Route path='regionsursnp/ubicacioncarpetassur' element={<UbicacionCarpetasSur />} />
             <Route path='regionsursnp/descargassur' element={<DescargasSur />} />
+          
           </Route>
+            
+          <Route path='/RegionNorteCentroSNP/*' element={<NavbarHomeSesionsnp />}>
+            </Route>
 
-          {/* Ruta por defecto */}
           <Route path='*' element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>

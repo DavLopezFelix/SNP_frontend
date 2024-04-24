@@ -1,14 +1,36 @@
 // NavbarSesionsnp.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Outlet, Link } from 'react-router-dom';
 import logo from '../img/logoprincipal.png';
 import logoSecundario from '../img/logoSalvamares.png';
 import '../layouts/navbar.css';
+import { Authenticator ,} from '@aws-amplify/ui-react';
+import {  getCurrentUser,signIn,signOut,} from '@aws-amplify/auth';
 
+import NavbarHomeSesionsnp from './navbarhomesesionsnp';
 const NavbarSesionsnp = () => {
+    const [userData,setUser] = useState(null)
+
+// useEffect(()=>{
+
+//     const getData  =async()=>{
+//         try {
+//             const auth = await getCurrentUser()
+//             setUser(auth)
+//         console.log({auth})
+//         } catch (error) {
+//             setUser(null)
+//             console.log({error})
+//         }
+        
+//     }
+//     getData()
+// },[])
+
     return (
         <>
+        {!userData &&
         <Navbar className="navBg" variant="dark" expand="lg">
             <Container>
                 {/* Logo principal a la izquierda */}
@@ -24,9 +46,18 @@ const NavbarSesionsnp = () => {
                 {/* Logo secundario a la derecha */}
                 <img src={logoSecundario} alt="Logo Secundario" className="nav-item-img" style={{ width: "150px", height: "65px" }}/>
             </Container>
-        </Navbar>
+        </Navbar>}
+        {userData && <NavbarHomeSesionsnp signOut={signOut} setUser={setUser} />}
         <section>
-                <Outlet></Outlet>
+
+            <Authenticator className="authenticator-container"  >
+                    {({ signOut,user }) => {
+                        setUser(user)
+                        return(
+                        <Outlet/>
+
+                    )}} 
+                </Authenticator>
             </section>
         </>
     );
