@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PopupMessage from './popupmessage'; // Importa el componente PopupMessage
 import './descargas.css';
+const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
+const API_url = process.env.REACT_APP_API_url;
 
 function Descargas() {
   const [temporadas, setTemporadas] = useState([]);
@@ -14,12 +16,11 @@ function Descargas() {
   const [error, setError] = useState('');
   const [confirmationMessage, setConfirmationMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false); // Estado para controlar la visibilidad del mensaje emergente
-  const apiKey = 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO';
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/listTemporadas', {
+        const response = await fetch(`${API_url}/temporadasUbicaciones/listTemporadas`, {
           headers: {
             'x-api-key': apiKey
           }
@@ -52,7 +53,7 @@ function Descargas() {
 
     try {
       setLoadingRanking(true);
-      const response = await fetch(`https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/downloadFiles/rankings?temporada=${selectedTemporada}`, {
+      const response = await fetch(`${API_url}/downloadFiles/rankings?temporada=${selectedTemporada}`, {
         headers: {
           'x-api-key': apiKey
         }
@@ -90,12 +91,12 @@ function Descargas() {
       setLoadingConsolidada(true);
   
       // Llamada a la segunda API para la data cruda y consolidada
-      const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/downloadFiles/consolidadoAndProcesado?temporada=Temporada2024-II', {
+      const response = await fetch(`${API_url}/downloadFiles/consolidadoAndProcesado?temporada=${selectedTemporada}`, {
         headers: {
           'x-api-key': apiKey
         }
       });
-  
+      console.log(`${API_url}/downloadFiles/consolidadoAndProcesado?temporada=${selectedTemporada}`)
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

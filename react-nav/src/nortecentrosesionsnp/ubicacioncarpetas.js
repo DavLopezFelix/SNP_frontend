@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ubicacioncarpeta.css';
 import PopupMessage from './popupmessage'; // Importa el componente PopupMessage
+const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
+const API_url = process.env.REACT_APP_API_url;
 
 const UbicacionCarpetas = () => {
   const [appData, setAppData] = useState(null);
@@ -15,9 +17,9 @@ const UbicacionCarpetas = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/appLocation', {
+      const response = await fetch(`${API_url}/temporadasUbicaciones/appLocation`, {
         headers: {
-          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO'
+          'x-api-key': apiKey
         }
       });
       const responseData = await response.json();
@@ -49,10 +51,10 @@ const UbicacionCarpetas = () => {
       return;
     }
     try {
-      const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/temporadasUbicaciones/appLocation', {
+      const response = await fetch(`${API_url}/temporadasUbicaciones/appLocation`, {
         method: 'POST',
         headers: {
-          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
+          'x-api-key': apiKey,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(nuevaUbicacion)
@@ -73,10 +75,10 @@ const UbicacionCarpetas = () => {
 
   const ejecutarAhora = async () => {
     try {
-      const response = await fetch('https://0fdeuy89wl.execute-api.us-east-1.amazonaws.com/snpPreprod/runProcess', {
+      const response = await fetch(`${API_url}/runProcess`, {
         method: 'GET',
         headers: {
-          'x-api-key': 'GafXD93ZXV3jbslFcBaXT1ALLcKkBBG04JP9ZmCO',
+          'x-api-key': apiKey,
           'Content-Type': 'application/json'
         }
       });
