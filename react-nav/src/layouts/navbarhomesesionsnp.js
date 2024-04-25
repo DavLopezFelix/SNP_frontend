@@ -1,30 +1,25 @@
 import React from 'react';
 import { Nav, Navbar, Container } from "react-bootstrap";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './navbar.css';
 import logo from '../img/logoprincipal.png';
 import logoSecundario from '../img/logoSalvamares.png';
 
-const NavbarHomeSesionsnp = ({ signOut }) => {
+const NavbarHomeSesionsnp = ({ signOut,setUser }) => {
     const navigate = useNavigate();
 
     const handleSignOut = () => {
         // Realiza las operaciones necesarias para cerrar sesión
         if (signOut) {
+            setUser(null)
             signOut();
         }
-    // Antes esta esto:
-        // Redirige al usuario a la vista de autenticación
-        // navigate('/sesionsnp');
 
-    // Ahora esto:
         // Redirige al usuario a la vista principal
         navigate('/');
-        // Hasta aquí
     }
 
     return (
-        <>
             <Navbar className="navBg" variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand as={Link} to="/">
@@ -41,10 +36,7 @@ const NavbarHomeSesionsnp = ({ signOut }) => {
                     <img src={logoSecundario} alt="Logo Secundario" className="nav-item-img" style={{ width: "150px", height: "65px" }}/>
                 </Container>
             </Navbar>
-            <section>
-                <Outlet></Outlet>
-            </section>
-        </>
+           
     );
 };
 
