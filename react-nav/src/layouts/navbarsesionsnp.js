@@ -50,14 +50,15 @@ const NavbarSesionsnp = () => {
         {userData && <NavbarHomeSesionsnp signOut={signOut} setUser={setUser} />}
         <section>
 
-            <Authenticator className="authenticator-container"  >
-                    {({ signOut,user }) => {
-                        setUser(user)
-                        return(
-                        <Outlet/>
+        <Authenticator className="authenticator-container" hideSignUp={true}>
+  {({ signOut, user }) => {
+    setUser(user)
+    return (
+      <Outlet />
+    )
+  }}
+</Authenticator>
 
-                    )}} 
-                </Authenticator>
             </section>
         </>
     );
