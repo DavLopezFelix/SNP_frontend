@@ -12,6 +12,7 @@ function LongitudPeso() {
   const [temporadaInput, setTemporadaInput] = useState('');
   const [aInput, setAInput] = useState('');
   const [bInput, setBInput] = useState('');
+  const [linkInput, setLinkInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -68,17 +69,17 @@ function LongitudPeso() {
         body: JSON.stringify({
           temporada: temporadaInput,
           A: parseFloat(aInput),
-          B: parseFloat(bInput)
+          B: parseFloat(bInput),
+          link: linkInput
         })
       });
 
-      // Refetch data to update UI after submission
       fetchData();
 
-      // Clear input fields and error message
       setTemporadaInput('');
       setAInput('');
       setBInput('');
+      setLinkInput('');
       setErrorMessage('');
       setShowPopup(false);
       setShowSuccessMessage(true);
@@ -118,11 +119,16 @@ function LongitudPeso() {
 
   const handleCloseEditMessage = () => {
     setShowEditMessage(false);
-    // Clear input fields and call fetchData again
     setTemporadaInput('');
     setAInput('');
     setBInput('');
+    setLinkInput('');
     fetchData();
+  };
+
+  const handleSendLink = () => {
+    console.log('Enviando link:', linkInput);
+    // Aquí puedes agregar la lógica para enviar el link si es necesario
   };
 
   return (
@@ -140,7 +146,8 @@ function LongitudPeso() {
               <tr>
                 <td colSpan="2" style={{ textAlign: 'center' }}>
                   <p>{data.temporada}</p>
-                  <input className="inputbox"
+                  <input
+                    className="inputbox"
                     type="text"
                     placeholder="Nuevo valor de temporada"
                     value={temporadaInput}
@@ -154,7 +161,8 @@ function LongitudPeso() {
               <tr>
                 <td colSpan="2" style={{ textAlign: 'center' }}>
                   <p>{data.A}</p>
-                  <input className="inputbox"
+                  <input
+                    className="inputbox"
                     type="number"
                     placeholder="Nuevo valor de A"
                     value={aInput}
@@ -168,7 +176,8 @@ function LongitudPeso() {
               <tr>
                 <td colSpan="2" style={{ textAlign: 'center' }}>
                   <p>{data.B}</p>
-                  <input className="inputbox"
+                  <input
+                    className="inputbox"
                     type="number"
                     placeholder="Nuevo valor de B"
                     value={bInput}
@@ -178,32 +187,56 @@ function LongitudPeso() {
               </tr>
             </tbody>
           </table>
+          <button className="button-enviar" onClick={handleSubmit}>Enviar</button>
+          <button className="button-editar" onClick={handleEditDecision}>Editar</button>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+          {showPopup && (
+            <PopupConfirm
+              message={`¿Está seguro que "${temporadaToConfirm}" es el nombre que quiere ponerle a la temporada ?`}
+              onConfirm={handleConfirm}
+              onCancel={handleCancel}
+            />
+          )}
+          {showSuccessMessage && (
+            <PopupSuccess
+              message="Datos enviados con éxito"
+              onClose={handleCloseSuccessPopup}
+            />
+          )}
+          {showEditMessage && (
+            <PopupMessage
+              message="Datos editados con éxito"
+              onClose={handleCloseEditMessage}
+            />
+          )}
+         <div>
+            <div>
+            {/* <tbody>
+              <tr>
+                <td colSpan="2" style={{ textAlign: 'center' }}>
+                  <input
+                    className="inputbox"
+                    style={{ width: '80%', textAlign: 'center' }}
+                    type="text"
+                    placeholder="Ingrese el link"
+                    value={linkInput}
+                    onChange={(e) => setLinkInput(e.target.value)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="2" style={{ textAlign: 'center' }}>
+                  <button className="button-enviar" onClick={handleSendLink}>Enviar</button>
+                </td>
+              </tr>
+            </tbody> */}
+            </div>
+            </div>
         </div>
-      )}
-      <button className="button-enviar" onClick={handleSubmit}>Enviar</button>
-      <button className="button-editar" onClick={handleEditDecision}>Editar</button>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      {showPopup && (
-        <PopupConfirm
-          message={`¿Está seguro que "${temporadaToConfirm}" es el nombre que quiere ponerle a la temporada ?`}
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
-        />
-      )}
-      {showSuccessMessage && (
-        <PopupSuccess
-          message="Datos enviados con éxito"
-          onClose={handleCloseSuccessPopup}
-        />
-      )}
-      {showEditMessage && (
-        <PopupMessage
-          message="Datos editados con éxito"
-          onClose={handleCloseEditMessage}
-        />
       )}
     </div>
   );
 }
 
 export default LongitudPeso;
+ 
