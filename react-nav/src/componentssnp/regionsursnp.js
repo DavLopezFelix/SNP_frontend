@@ -1,46 +1,31 @@
 import React, { useState } from 'react';
 import Boton from '../nortecentro/boton';
 import '../componentsclient/estilosregiones.css'; 
-
-const LongitudPeso = () => (
-  <div className="mensaje">
-    Aquí encontrará la LOngitud Peso.
-  </div>
-);
-
-const UbicacionCarpetas = () => (
-  <div className="mensaje">
-    Aquí encontrarás la Ubicacion de Carpetas.
-  </div>
-);
-
-const Descargas = () => (
-    <div className="mensaje">
-      Aquí encontrarás las descargas.
-    </div>
-  );
+import UbicacionCarpetasSur from '../sursesionsnp/ubicacioncarpetassur';
+import DescargasSur from '../sursesionsnp/descargassur';
+import LongitudPesoSur from '../sursesionsnp/longitudpesosur';
 
 const RegionSurSNP = () => {
-    const [mostrarLongitudPeso, setMostrarLongitudPeso] = useState(true); // Inicialmente mostramos Reportes de empresa
-    const [mostrarUbicacionCarpetas, setMostrarUbicacionCarpetas] = useState(false);
-    const [mostrarDescargas, setMostrarDescargas] = useState(false);
+    const [mostrarLongitudPesoSur, setMostrarLongitudPesoSur] = useState(true); // Inicialmente mostramos Reportes de empresa
+    const [mostrarUbicacionCarpetasSur, setMostrarUbicacionCarpetasSur] = useState(false);
+    const [mostrarDescargasSur, setMostrarDescargasSur] = useState(false);
 
 
-    const mostrarSoloLongitudPeso = () => {
-        setMostrarLongitudPeso(true);
-        setMostrarUbicacionCarpetas(false);
-        setMostrarDescargas(false);
+    const mostrarSoloLongitudPesoSur = () => {
+        setMostrarLongitudPesoSur(true);
+        setMostrarUbicacionCarpetasSur(false);
+        setMostrarDescargasSur(false);
     };
 
-    const mostrarSoloUbicacionCarpetas = () => {
-        setMostrarLongitudPeso(false);
-        setMostrarUbicacionCarpetas(true);
-        setMostrarDescargas(false);
+    const mostrarSoloUbicacionCarpetasSur = () => {
+        setMostrarLongitudPesoSur(false);
+        setMostrarUbicacionCarpetasSur(true);
+        setMostrarDescargasSur(false);
     };
-    const mostrarSoloDescargas = () => {
-        setMostrarLongitudPeso(false);
-        setMostrarUbicacionCarpetas(false);
-        setMostrarDescargas(true);
+    const mostrarSoloDescargasSur = () => {
+        setMostrarLongitudPesoSur(false);
+        setMostrarUbicacionCarpetasSur(false);
+        setMostrarDescargasSur(true);
     };
 
     return (
@@ -52,26 +37,26 @@ const RegionSurSNP = () => {
                             <td>
                                 <h1 className="region-title">Región sur</h1>
                             </td>
-                            <td style={{ backgroundColor: mostrarLongitudPeso ? '#1E9AAA' : 'white' }}>
+                            <td style={{ backgroundColor: mostrarLongitudPesoSur ? '#1E9AAA' : 'white' }}>
                                 {/* Botón para mostrar Reportes de Empresas */}
                                 <div className="boton-container">
-                                    <Boton onClick={mostrarSoloLongitudPeso} color={mostrarLongitudPeso ? '#1E9AAA' : 'white'} textColor={mostrarLongitudPeso ? 'white' : 'black'}>
+                                    <Boton onClick={mostrarSoloLongitudPesoSur} color={mostrarLongitudPesoSur ? '#1E9AAA' : 'white'} textColor={mostrarLongitudPesoSur ? 'white' : 'black'}>
                                         Relación Longitud - Peso
                                     </Boton>
                                 </div>
                             </td>
-                            <td style={{ backgroundColor: mostrarUbicacionCarpetas ? '#1E9AAA' : 'white' }}>
+                            <td style={{ backgroundColor: mostrarUbicacionCarpetasSur ? '#1E9AAA' : 'white' }}>
                                 {/* Botón para mostrar Ranking por Puntuación */}
                                 <div className="boton-container">
-                                    <Boton onClick={mostrarSoloUbicacionCarpetas} color={mostrarUbicacionCarpetas? '#1E9AAA' : 'white'} textColor={mostrarUbicacionCarpetas ? 'white' : 'black'}>
+                                    <Boton onClick={mostrarSoloUbicacionCarpetasSur} color={mostrarUbicacionCarpetasSur? '#1E9AAA' : 'white'} textColor={mostrarUbicacionCarpetasSur ? 'white' : 'black'}>
                                         Ubicación de carpetas
                                     </Boton>
                                 </div>
                             </td>
-                            <td style={{ backgroundColor: mostrarDescargas ? '#1E9AAA' : 'white' }}>
+                            <td style={{ backgroundColor: mostrarDescargasSur ? '#1E9AAA' : 'white' }}>
                                 {/* Botón para mostrar Ranking por Puntuación */}
                                 <div className="boton-container">
-                                    <Boton onClick={mostrarSoloDescargas} color={mostrarDescargas? '#1E9AAA' : 'white'} textColor={mostrarDescargas ? 'white' : 'black'}>
+                                    <Boton onClick={mostrarSoloDescargasSur} color={mostrarDescargasSur? '#1E9AAA' : 'white'} textColor={mostrarDescargasSur ? 'white' : 'black'}>
                                         Descargas
                                     </Boton>
                                 </div>
@@ -83,19 +68,19 @@ const RegionSurSNP = () => {
 
             {/* Cuadro grande para los mensajes debajo de la tabla */}
             <div className="cuadro-grande">
-                {mostrarLongitudPeso && (
+                {mostrarLongitudPesoSur && (
                     <div>
-                        <LongitudPeso />
+                        <LongitudPesoSur />
                     </div>
                 )}
-                {mostrarUbicacionCarpetas && (
+                {mostrarUbicacionCarpetasSur && (
                     <div>
-                        <UbicacionCarpetas />
+                        <UbicacionCarpetasSur />
                     </div>
                 )}
-                 {mostrarDescargas && (
+                 {mostrarDescargasSur && (
                     <div>
-                        <Descargas />
+                        <DescargasSur />
                     </div>
                 )}
             </div>
