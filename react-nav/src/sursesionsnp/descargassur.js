@@ -165,8 +165,8 @@ function DescargasSur() {
 
   return (
     <div>
-      <div className="DescargasSur-container">
-        <select className="select-dropdown" value={selectedTemporada} onChange={handleChange}>
+          <div className="descargas-container">
+          <select className="select-dropdown" value={selectedTemporada} onChange={handleChange}>
           <option value="" disabled>Seleccione temporada</option>
           {temporadas.map((temporada, index) => (
             <option key={index} value={temporada}>

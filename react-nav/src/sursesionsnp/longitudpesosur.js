@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PopupConfirm from '../nortecentrosesionsnp/pupupconfirm';
 import PopupSuccess from '../nortecentrosesionsnp/popupsucces';
 import PopupMessage from '../nortecentrosesionsnp/popupmessage';
-import '../nortecentrosesionsnp/longitudpeso.css';
+import './longitudpesosur.css';
 const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
 const API_url = process.env.REACT_APP_API_sur_url;
 
@@ -127,11 +127,11 @@ function LongitudPesoSur() {
 
   const handleSendLink = () => {
     console.log('Enviando link:', linkInput);
-    // Aquí puedes agregar la lógica para enviar el link si es necesario
+
   };
 
   return (
-    <div className="LongitudPesoSur">
+    <div className="longitudpeso">
       {error && <p>Error: {error}</p>}
       {data && (
         <div>
@@ -186,8 +186,11 @@ function LongitudPesoSur() {
               </tr>
             </tbody>
           </table>
-          <button className="button-enviar" onClick={handleSubmit}>Enviar</button>
-          <button className="button-editar" onClick={handleEditDecision}>Editar</button>
+          <div className='containersur'>
+          <button className="button-enviar-sur" onClick={handleSubmit}>Enviar</button>
+          <button className="button-editar-sur" onClick={handleEditDecision}>Editar</button>
+          </div>
+          <div className='containersur'>
           {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
           {showPopup && (
             <PopupConfirm
@@ -208,27 +211,9 @@ function LongitudPesoSur() {
               onClose={handleCloseEditMessage}
             />
           )}
+          </div>
          <div>
             <div>
-            {/* <tbody>
-              <tr>
-                <td colSpan="2" style={{ textAlign: 'center' }}>
-                  <input
-                    className="inputbox"
-                    style={{ width: '80%', textAlign: 'center' }}
-                    type="text"
-                    placeholder="Ingrese el link"
-                    value={linkInput}
-                    onChange={(e) => setLinkInput(e.target.value)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="2" style={{ textAlign: 'center' }}>
-                  <button className="button-enviar" onClick={handleSendLink}>Enviar</button>
-                </td>
-              </tr>
-            </tbody> */}
             </div>
             </div>
         </div>
