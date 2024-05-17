@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './reportesempresas.css'; // Importa tu archivo CSS para estilos personalizados
+import '../nortecentro/reportesempresas.css'; // Importa tu archivo CSS para estilos personalizados
 const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
 const API_url = process.env.REACT_APP_API_sur_url;
 
-function ReportesEmpresas() {
+function ReportesEmpresasSur() {
   const [rankingData, setRankingData] = useState(null);
 
   useEffect(() => {
@@ -60,4 +60,4 @@ function ReportesEmpresas() {
   );
 }
 
-export default ReportesEmpresas;
+export default ReportesEmpresasSur;

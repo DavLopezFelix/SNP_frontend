@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import Boton from '../nortecentro/boton';
-import RankingPorPuntuacion from '../nortecentro/rankingpuntuacion'; // Asegúrate de reemplazar esta ruta con la ruta correcta
+import RankingPorPuntuacionSur from '../sur/rankingpuntuacionsur'; // Asegúrate de reemplazar esta ruta con la ruta correcta
 import './estilosregiones.css'; 
-import ReportesEmpresas from '../nortecentro/reportesempresas'; 
+import ReportesEmpresasSur from '../sur/reportesempresasur'; 
 
 
 const Regionsur = () => {
-    const [mostrarReportes, setMostrarReportes] = useState(true); // Inicialmente mostramos Reportes de empresa
-    const [mostrarRanking, setMostrarRanking] = useState(false);
+    const [mostrarReportesEmpresasSur, setMostrarReportesEmpresasSur] = useState(true); // Inicialmente mostramos Reportes de empresa
+    const [mostrarRankingPorPuntuacionSur, setMostrarRankingPorPuntuacionSur] = useState(false);
 
-    const mostrarSoloReportes = () => {
-        setMostrarReportes(true);
-        setMostrarRanking(false);
+    const mostrarSoloReportesEmpresasSur = () => {
+        setMostrarReportesEmpresasSur(true);
+        setMostrarRankingPorPuntuacionSur(false);
     };
 
-    const mostrarSoloRanking = () => {
-        setMostrarReportes(false);
-        setMostrarRanking(true);
+    const mostrarSoloRankingPorPuntuacionSur = () => {
+        setMostrarReportesEmpresasSur(false);
+        setMostrarRankingPorPuntuacionSur(true);
     };
 
     return (
@@ -28,18 +28,18 @@ const Regionsur = () => {
                             <td>
                                 <h1 className="region-title">Región sur</h1>
                             </td>
-                            <td style={{ backgroundColor: mostrarReportes ? '#1E9AAA' : 'white' }}>
+                            <td style={{ backgroundColor: mostrarReportesEmpresasSur ? '#1E9AAA' : 'white' }}>
                                 {/* Botón para mostrar Reportes de Empresas */}
                                 <div className="boton-container">
-                                    <Boton onClick={mostrarSoloReportes} color={mostrarReportes ? '#1E9AAA' : 'white'} textColor={mostrarReportes ? 'white' : 'black'}>
+                                    <Boton onClick={mostrarSoloReportesEmpresasSur} color={mostrarReportesEmpresasSur ? '#1E9AAA' : 'white'} textColor={mostrarReportesEmpresasSur ? 'white' : 'black'}>
                                         Reportes de Empresas
                                     </Boton>
                                 </div>
                             </td>
-                            <td style={{ backgroundColor: mostrarRanking ? '#1E9AAA' : 'white' }}>
+                            <td style={{ backgroundColor: mostrarRankingPorPuntuacionSur ? '#1E9AAA' : 'white' }}>
                                 {/* Botón para mostrar Ranking por Puntuación */}
                                 <div className="boton-container">
-                                    <Boton onClick={mostrarSoloRanking} color={mostrarRanking ? '#1E9AAA' : 'white'} textColor={mostrarRanking ? 'white' : 'black'}>
+                                    <Boton onClick={mostrarSoloRankingPorPuntuacionSur} color={mostrarRankingPorPuntuacionSur ? '#1E9AAA' : 'white'} textColor={mostrarRankingPorPuntuacionSur ? 'white' : 'black'}>
                                         Ranking por Puntuación
                                     </Boton>
                                 </div>
@@ -51,14 +51,14 @@ const Regionsur = () => {
 
             {/* Cuadro grande para los mensajes debajo de la tabla */}
             <div className="cuadro-grande">
-                {mostrarReportes && (
+                {mostrarReportesEmpresasSur && (
                     <div>
-                        <ReportesEmpresas />
+                        <ReportesEmpresasSur />
                     </div>
                 )}
-                {mostrarRanking && (
+                {mostrarRankingPorPuntuacionSur && (
                     <div>
-                        <RankingPorPuntuacion />
+                        <RankingPorPuntuacionSur />
                     </div>
                 )}
             </div>

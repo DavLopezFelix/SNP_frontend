@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './nortecentro.css';
+import '../nortecentro/nortecentro.css';
 const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
 const API_url = process.env.REACT_APP_API_sur_url; 
 
-function RankingPorPuntuacion() {
+function RankingPorPuntuacionSur() {
   const [rankingData, setRankingData] = useState([]);
 
   useEffect(() => {
@@ -50,5 +50,5 @@ function RankingPorPuntuacion() {
   );
 }
 
-export default RankingPorPuntuacion;
+export default RankingPorPuntuacionSur;
 
