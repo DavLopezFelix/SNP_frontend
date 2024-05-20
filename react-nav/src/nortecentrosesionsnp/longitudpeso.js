@@ -3,6 +3,7 @@ import PopupConfirm from './pupupconfirm';
 import PopupSuccess from './popupsucces';
 import PopupMessage from './popupmessage';
 import './longitudpeso.css';
+import '../nortecentrosesionsnp/ubicacioncarpeta.css'
 const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
 const API_url = process.env.REACT_APP_API_url;
 
@@ -13,6 +14,8 @@ function LongitudPeso() {
   const [aInput, setAInput] = useState('');
   const [bInput, setBInput] = useState('');
   const [linkInput, setLinkInput] = useState('');
+  const [imarpeData, setImarpeData] = useState(null);
+  const [imarpeInput, setImarpeInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -21,6 +24,7 @@ function LongitudPeso() {
 
   useEffect(() => {
     fetchData();
+    fetchImarpeData();
   }, []);
 
   const fetchData = async () => {
@@ -35,6 +39,23 @@ function LongitudPeso() {
       }
       const jsonData = await response.json();
       setData(jsonData);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const fetchImarpeData = async () => {
+    try {
+      const response = await fetch(`${API_url}/imarpeURL`, {
+        headers: {
+          'x-api-key': apiKey
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch Imarpe data');
+      }
+      const jsonData = await response.json();
+      setImarpeData(jsonData);
     } catch (error) {
       setError(error.message);
     }
@@ -70,7 +91,6 @@ function LongitudPeso() {
           temporada: temporadaInput,
           A: parseFloat(aInput),
           B: parseFloat(bInput),
-          link: linkInput
         })
       });
 
@@ -126,9 +146,29 @@ function LongitudPeso() {
     fetchData();
   };
 
-  const handleSendLink = () => {
-    console.log('Enviando link:', linkInput);
-    // Aquí puedes agregar la lógica para enviar el link si es necesario
+  const handleSendLink = async () => {
+    if (!imarpeInput) {
+      setErrorMessage('Por favor, complete todos los campos.');
+      return;
+    }
+
+    try {
+      await fetch(`${API_url}/imarpeURL`, {
+        method: 'POST',
+        headers: {
+          'x-api-key': apiKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          imarpeLocation: imarpeInput
+        })
+      });
+
+      setImarpeInput('');
+      fetchImarpeData();
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -209,34 +249,44 @@ function LongitudPeso() {
               onClose={handleCloseEditMessage}
             />
           )}
-         <div>
-            <div>
-            {/* <tbody>
-              <tr>
-                <td colSpan="2" style={{ textAlign: 'center' }}>
-                  <input
-                    className="inputbox"
-                    style={{ width: '80%', textAlign: 'center' }}
-                    type="text"
-                    placeholder="Ingrese el link"
-                    value={linkInput}
-                    onChange={(e) => setLinkInput(e.target.value)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="2" style={{ textAlign: 'center' }}>
-                  <button className="button-enviar" onClick={handleSendLink}>Enviar</button>
-                </td>
-              </tr>
-            </tbody> */}
-            </div>
-            </div>
         </div>
       )}
+
+      {/* IMARPE */}
+      {imarpeData && (
+         <div className="app-container">    
+        {/* <div className="ubicacion-carpetas-container"> */}
+        {/* {successMessage && <PopupMessage message={successMessage} onClose={closePopup} />} */}
+         
+          <table className="ubicacion-carpetas-table-imarpe">
+          <thead>
+            <tr>
+              <th colSpan="2" style={{ backgroundColor: '#00B3A1', color: 'white', textAlign: 'center' }}>IMARPE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="link-cell" colSpan="2">
+          <p>{imarpeData.imarpeLocation}</p>
+          <input
+            className="inputbox-imarpe"
+            type="text"
+            placeholder="Nuevo valor de Imarpe"
+            value={imarpeInput}
+            onChange={(e) => setImarpeInput(e.target.value)}
+          />
+           </td>
+            </tr>
+          </tbody>
+          </table>
+          <button className="button-enviar-imarpe" onClick={handleSendLink}>Enviar</button>
+        </div>
+        // </div>
+      )}
+
+
     </div>
   );
 }
 
 export default LongitudPeso;
- 
