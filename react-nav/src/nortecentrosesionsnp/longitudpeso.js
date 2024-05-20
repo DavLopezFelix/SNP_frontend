@@ -21,6 +21,8 @@ function LongitudPeso() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [temporadaToConfirm, setTemporadaToConfirm] = useState('');
   const [showEditMessage, setShowEditMessage] = useState(false);
+  const [showImarpeSuccessMessage, setShowImarpeSuccessMessage] = useState(false);
+  const [imarpeErrorMessage, setImarpeErrorMessage] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -116,6 +118,10 @@ function LongitudPeso() {
     setShowSuccessMessage(false);
   };
 
+  const handleCloseImarpeSuccessPopup = () => {
+    setShowImarpeSuccessMessage(false);
+  };
+
   const handleEdit = async () => {
     try {
       await fetch(`${API_url}/temporadasUbicaciones/aybVariables`, {
@@ -148,7 +154,7 @@ function LongitudPeso() {
 
   const handleSendLink = async () => {
     if (!imarpeInput) {
-      setErrorMessage('Por favor, complete todos los campos.');
+      setImarpeErrorMessage('Por favor, complete el campo.');
       return;
     }
 
@@ -166,6 +172,8 @@ function LongitudPeso() {
 
       setImarpeInput('');
       fetchImarpeData();
+      setShowImarpeSuccessMessage(true); // Mostrar el mensaje de éxito
+      setImarpeErrorMessage(''); // Limpiar el mensaje de error
     } catch (error) {
       setError(error.message);
     }
@@ -254,37 +262,38 @@ function LongitudPeso() {
 
       {/* IMARPE */}
       {imarpeData && (
-         <div className="app-container">    
-        {/* <div className="ubicacion-carpetas-container"> */}
-        {/* {successMessage && <PopupMessage message={successMessage} onClose={closePopup} />} */}
-         
+        <div className="app-container">    
           <table className="ubicacion-carpetas-table-imarpe">
-          <thead>
-            <tr>
-              <th colSpan="2" style={{ backgroundColor: '#00B3A1', color: 'white', textAlign: 'center' }}>IMARPE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="link-cell" colSpan="2">
-          <p>{imarpeData.imarpeLocation}</p>
-          <input
-            className="inputbox-imarpe"
-            type="text"
-            placeholder="Nuevo valor de Imarpe"
-            value={imarpeInput}
-            onChange={(e) => setImarpeInput(e.target.value)}
-          />
-           </td>
-            </tr>
-          </tbody>
+            <thead>
+              <tr>
+                <th colSpan="2" style={{ backgroundColor: '#00B3A1', color: 'white', textAlign: 'center' }}>IMARPE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="link-cell" colSpan="2">
+                  <p>{imarpeData.imarpeLocation}</p>
+                  <input
+                    className="inputbox-imarpe"
+                    type="text"
+                    placeholder="Ingresa el nuevo link"
+                    value={imarpeInput}
+                    onChange={(e) => setImarpeInput(e.target.value)}
+                  />
+                </td>
+              </tr>
+            </tbody>
           </table>
           <button className="button-enviar-imarpe" onClick={handleSendLink}>Enviar</button>
+          {imarpeErrorMessage && <p style={{ color: 'red' }}>{imarpeErrorMessage}</p>}
+          {showImarpeSuccessMessage && (
+            <PopupSuccess
+              message="Datos enviados con éxito"
+              onClose={handleCloseImarpeSuccessPopup}
+            />
+          )}
         </div>
-        // </div>
       )}
-
-
     </div>
   );
 }
