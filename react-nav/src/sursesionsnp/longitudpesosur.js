@@ -3,6 +3,7 @@ import PopupConfirm from '../nortecentrosesionsnp/pupupconfirm';
 import PopupSuccess from '../nortecentrosesionsnp/popupsucces';
 import PopupMessage from '../nortecentrosesionsnp/popupmessage';
 import './longitudpesosur.css';
+import '../nortecentrosesionsnp/longitudpeso.css'
 const apiKey = process.env.REACT_APP_lastTemporada_ApiKey;
 const API_url = process.env.REACT_APP_API_sur_url;
 
@@ -13,14 +14,19 @@ function LongitudPesoSur() {
   const [aInput, setAInput] = useState('');
   const [bInput, setBInput] = useState('');
   const [linkInput, setLinkInput] = useState('');
+  const [imarpeData, setImarpeData] = useState(null);
+  const [imarpeInput, setImarpeInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [temporadaToConfirm, setTemporadaToConfirm] = useState('');
   const [showEditMessage, setShowEditMessage] = useState(false);
+  const [showImarpeSuccessMessage, setShowImarpeSuccessMessage] = useState(false);
+  const [imarpeErrorMessage, setImarpeErrorMessage] = useState('');
 
   useEffect(() => {
     fetchData();
+    fetchImarpeData();
   }, []);
 
   const fetchData = async () => {
@@ -35,6 +41,23 @@ function LongitudPesoSur() {
       }
       const jsonData = await response.json();
       setData(jsonData);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const fetchImarpeData = async () => {
+    try {
+      const response = await fetch(`${API_url}/imarpeURL`, {
+        headers: {
+          'x-api-key': apiKey
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch Imarpe data');
+      }
+      const jsonData = await response.json();
+      setImarpeData(jsonData);
     } catch (error) {
       setError(error.message);
     }
@@ -95,6 +118,10 @@ function LongitudPesoSur() {
     setShowSuccessMessage(false);
   };
 
+  const handleCloseImarpeSuccessPopup = () => {
+    setShowImarpeSuccessMessage(false);
+  };
+
   const handleEdit = async () => {
     try {
       await fetch(`${API_url}/temporadasUbicaciones/aybVariables`, {
@@ -125,9 +152,31 @@ function LongitudPesoSur() {
     fetchData();
   };
 
-  const handleSendLink = () => {
-    console.log('Enviando link:', linkInput);
+  const handleSendLink = async () => {
+    if (!imarpeInput) {
+      setImarpeErrorMessage('Por favor, complete el campo.');
+      return;
+    }
 
+    try {
+      await fetch(`${API_url}/imarpeURL`, {
+        method: 'POST',
+        headers: {
+          'x-api-key': apiKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          imarpeLocation: imarpeInput
+        })
+      });
+
+      setImarpeInput('');
+      fetchImarpeData();
+      setShowImarpeSuccessMessage(true); // Mostrar el mensaje de éxito
+      setImarpeErrorMessage(''); // Limpiar el mensaje de error
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -186,36 +235,63 @@ function LongitudPesoSur() {
               </tr>
             </tbody>
           </table>
-          <div className='containersur'>
-          <button className="button-enviar-sur" onClick={handleSubmit}>Enviar</button>
-          <button className="button-editar-sur" onClick={handleEditDecision}>Editar</button>
+            <button className="button-enviar-sur" onClick={handleSubmit}>Enviar</button>
+            <button className="button-editar-sur" onClick={handleEditDecision}>Editar</button>
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            {showPopup && (
+              <PopupConfirm
+                message={`¿Está seguro que "${temporadaToConfirm}" es el nombre que quiere ponerle a la temporada ?`}
+                onConfirm={handleConfirm}
+                onCancel={handleCancel}
+              />
+            )}
+            {showSuccessMessage && (
+              <PopupSuccess
+                message="Datos enviados con éxito"
+                onClose={handleCloseSuccessPopup}
+              />
+            )}
+            {showEditMessage && (
+              <PopupMessage
+                message="Datos editados con éxito"
+                onClose={handleCloseEditMessage}
+              />
+            )}
           </div>
-          <div className='containersur'>
-          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-          {showPopup && (
-            <PopupConfirm
-              message={`¿Está seguro que "${temporadaToConfirm}" es el nombre que quiere ponerle a la temporada ?`}
-              onConfirm={handleConfirm}
-              onCancel={handleCancel}
-            />
-          )}
-          {showSuccessMessage && (
+      )}
+
+      {/* IMARPE */}
+      {imarpeData && (
+        <div className="app-container">    
+          <table className="ubicacion-carpetas-table-imarpe">
+            <thead>
+              <tr>
+                <th colSpan="2" style={{ backgroundColor: '#00B3A1', color: 'white', textAlign: 'center' }}>IMARPE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="link-cell" colSpan="2">
+                  <p>{imarpeData.imarpeLocation}</p>
+                  <input
+                    className="inputbox-imarpe"
+                    type="text"
+                    placeholder="Ingresa el nuevo link"
+                    value={imarpeInput}
+                    onChange={(e) => setImarpeInput(e.target.value)}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button className="button-enviar-imarpe" onClick={handleSendLink}>Enviar</button>
+          {imarpeErrorMessage && <p style={{ color: 'red' }}>{imarpeErrorMessage}</p>}
+          {showImarpeSuccessMessage && (
             <PopupSuccess
               message="Datos enviados con éxito"
-              onClose={handleCloseSuccessPopup}
+              onClose={handleCloseImarpeSuccessPopup}
             />
           )}
-          {showEditMessage && (
-            <PopupMessage
-              message="Datos editados con éxito"
-              onClose={handleCloseEditMessage}
-            />
-          )}
-          </div>
-         <div>
-            <div>
-            </div>
-            </div>
         </div>
       )}
     </div>
@@ -223,4 +299,3 @@ function LongitudPesoSur() {
 }
 
 export default LongitudPesoSur;
- 
