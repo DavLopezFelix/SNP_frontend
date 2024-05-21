@@ -44,3 +44,33 @@
   padding: 8px;
   text-align: left;
 }
+.container-imarpe {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inputbox-imarpe {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.button-enviar-imarpe {
+  background-color: #00789C;
+  color: white;
+  margin: 20px 5px;
+  padding: 9px 22px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+.ubicacion-carpetas-table-imarpe{
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin: 0 auto; 
+}
